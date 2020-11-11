@@ -1,0 +1,14 @@
+{
+  "name": "tnt-common",
+  "version": "1.0.0",
+  "description": "Common files to both client and server",
+  "scripts": {},
+  "author": "Mateus Santana",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "typescript": "~3.5.3"
+  }
+}
