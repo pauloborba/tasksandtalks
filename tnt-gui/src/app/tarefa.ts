@@ -4,7 +4,7 @@ export class Tarefa {
   concluida: boolean;
   arquivada: boolean;
   snoozing: boolean;
-  lembrete: boolean;
+  lembrete: Date;
 
   constructor() { }
 
