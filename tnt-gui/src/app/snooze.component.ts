@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @AppComponent({
-    selector: 'app-root',
-    templateUrl: './snoozing.component.html',
-    styleUrls: ['./snoozing.component.css']
+    selector: 'snooze',
+    templateUrl: './snooze.component.html',
+    styleUrls: ['./snooze.component.css']
 })
 
 export class SnoozeComponent implements OnInit {
