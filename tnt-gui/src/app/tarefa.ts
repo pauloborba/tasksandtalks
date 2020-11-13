@@ -1,3 +1,5 @@
+import { Contexto } from './contexto';
+
 export class Tarefa {
   descricao: string;
   prazo: Date;
@@ -5,7 +7,8 @@ export class Tarefa {
   arquivada: boolean;
   snoozing: boolean;
   lembrete: Date;
-
+  contextos: Contexto[];
+  
   constructor() { }
 
 }
