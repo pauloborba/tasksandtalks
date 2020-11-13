@@ -17,6 +17,6 @@ export class ChatThread extends Contexto{
    }
 
    getThreadChats(): Chat[]{
-
+       return null;
    }
 }
