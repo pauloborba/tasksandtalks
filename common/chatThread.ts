@@ -1,7 +1,8 @@
 import { Chat } from 'chat';
 
 export class ChatThread extends Contexto{
-   threadChats: Chat[] = [];
+    threadName: string;
+    threadChats: Chat[] = [];
 
    constructor(){
        super();
