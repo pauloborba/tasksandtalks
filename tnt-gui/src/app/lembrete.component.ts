@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: '',
+    selector: 'lembrete',
     templateUrl: './lembrete.component.html',
     styleUrls: ['./lembrete.component.css']
   })
