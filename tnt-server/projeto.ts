@@ -1,4 +1,4 @@
-import { Tarefa } from '../tnt-gui/src/app/tarefa';
+import { Tarefa } from '../common/tarefa';
 
 export class Projeto {
     nome: string;
