@@ -1,10 +1,12 @@
-export class Email {
+export class Email{
     sender: string;
-    recipient: string;
+    receiver: string;
+    messageContent: string;
+    date: Date;
     subject: string;
-    content: string;
 
-    constructor() {
+    constructor(sender: string, receiver: string, messageContent: string, date: Date, subject: string){
 
     }
+
 }

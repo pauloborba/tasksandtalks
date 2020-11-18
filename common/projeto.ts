@@ -1,4 +1,4 @@
-import { Tarefa } from '../common/tarefa';
+import { Tarefa } from './tarefa';
 
 export class Projeto {
     nome: string;
