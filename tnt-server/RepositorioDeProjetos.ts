@@ -1,4 +1,4 @@
-import { Projeto } from '../tnt-server/projeto';
+import { Projeto } from '../common/projeto';
 
 export class RepositorioDeProjetos {
     listaDeProjetos : Projeto[] = [];
