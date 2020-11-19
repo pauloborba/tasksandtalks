@@ -31,7 +31,7 @@ export class ReplyComponent implements OnInit {
     const subject = reply_email.getSubject();
 
     email.setRecipient(recipient);
-    email.setSubject(subject);
+    email.setSubject(`Re: ${subject}`);
 
     console.log(`Enviando email de ${email.getSender()} para ${recipient}...`)
 
