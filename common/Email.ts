@@ -1,11 +1,14 @@
 export class Email{
     sender: string;
-    receiver: string;
+    recipient: string;
     content: string;
     subject: string;
 
-    constructor(sender: string, receiver: string, content: string, subject: string){
-
+    constructor(sender: string, recipient: string, content: string, subject: string){
+        this.sender = sender;
+        this.recipient = recipient;
+        this.content = content;
+        this.subject = subject;
     }
 
 }
