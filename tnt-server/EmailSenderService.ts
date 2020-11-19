@@ -1,9 +1,14 @@
+import Mail from './util/Mail'
+import { Email } from '../common/Email'
+
 export class EmailSenderService {
-    public sender: string;
-
-    constructor(sender: string) {
-        this.sender = sender;
+    public async execute(email: Email) {
+        const sendEmail = await Mail.sendMail({
+            from: `<${email.sender}>`,
+            to: `${email.recipient}`,
+            subject: `${email.subject}`,
+            text: `${email.content}`,
+        })
+        return sendEmail
     }
-
-    public send(recipient: string, subject: string, content: string) { }
 }

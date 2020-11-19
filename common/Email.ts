@@ -10,5 +10,4 @@ export class Email{
         this.subject = subject;
         this.content = content;
     }
-
 }
