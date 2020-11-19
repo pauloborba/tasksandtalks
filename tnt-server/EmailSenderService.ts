@@ -5,5 +5,5 @@ export class EmailSenderService {
         this.sender = sender;
     }
 
-    public send(subject: string, recipient: string, content: string) { }
+    public send(recipient: string, subject: string, content: string) { }
 }
