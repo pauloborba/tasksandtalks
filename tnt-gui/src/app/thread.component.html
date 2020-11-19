@@ -10,7 +10,10 @@
       <h5>{{threadEmail.email.subject}}</h5>
       <div class="reply-container">
         <p>{{threadEmail.email.content}}</p>
-        <reply [ThreadEmail]=threadEmail ></reply>
+        <reply
+          [ThreadEmail]=threadEmail
+          [Email]=userEmail>
+        </reply>
       </div>
       <hr>
     </div>

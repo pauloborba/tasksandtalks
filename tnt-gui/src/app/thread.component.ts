@@ -16,7 +16,14 @@ interface ThreadEmailI {
 export class ThreadComponent implements OnInit {
   constructor() { }
 
+  loggedUser = {
+    name: 'José Bezerra',
+    email: 'jbmn2@cin.ufpe.br'
+  }
+  userMessage: string = 'Estou respondendo este email';
+
   emails: ThreadEmailI[] = []
+  userEmail: Email = new Email(this.loggedUser.email, '', '', this.userMessage);
 
   ngOnInit() {
     for (let i = 0; i < 5; i++) {
