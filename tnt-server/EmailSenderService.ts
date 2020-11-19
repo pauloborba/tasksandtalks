@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import Mail from './util/Mail'
 import { Email } from '../common/Email'
 
