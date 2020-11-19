@@ -5,11 +5,13 @@ import { RouterModule }   from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThreadComponent } from './thread.component';
+import { ReplyComponent } from './reply.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ThreadComponent
+    ThreadComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
