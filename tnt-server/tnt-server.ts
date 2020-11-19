@@ -1,6 +1,8 @@
 import express = require('express');
 import bodyParser = require("body-parser");
 
+const LISTEN_PORT = 3000;
+
 var tntserver = express();
 
 var allowCrossDomain = function(req: any, res: any, next: any) {
@@ -12,3 +14,7 @@ var allowCrossDomain = function(req: any, res: any, next: any) {
 tntserver.use(allowCrossDomain);
 
 tntserver.use(bodyParser.json());
+
+tntserver.listen(LISTEN_PORT, ()=>{
+    console.log('🚀 Server is Running...')
+});
