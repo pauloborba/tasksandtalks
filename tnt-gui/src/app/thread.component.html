@@ -1,11 +1,18 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Thread</title>
-</head>
-<body>
-
-</body>
+  <div class="email-thread-container">
+    <h1>Thread de Emails</h1>
+    <hr>
+    <div *ngFor="let threadEmail of emails" class="email-container">
+      <div class="sender-recipient-container">
+        <h3>from: {{threadEmail.email.sender}}</h3>
+        <h4>to: {{threadEmail.email.recipient}}</h4>
+      </div>
+      <h5>{{threadEmail.email.subject}}</h5>
+      <div class="reply-container">
+        <p>{{threadEmail.email.content}}</p>
+        <button>Reply</button>
+      </div>
+      <hr>
+    </div>
+  </div>
 </html>

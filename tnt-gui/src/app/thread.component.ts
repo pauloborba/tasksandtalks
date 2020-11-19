@@ -19,8 +19,8 @@ export class ThreadComponent implements OnInit {
   emails: ThreadEmailI[] = []
 
   ngOnInit() {
-    for (let i = 0; i < 10; i++) {
-      const email = new Email('José Bezerra <jbmn2@cin.ufpe.br>', 'phmb@cin.ufpe.br', `Teste ${i + 1}`, 'Apenas um Teste');
+    for (let i = 0; i < 5; i++) {
+      const email = new Email('jbmn2@cin.ufpe.br', 'phmb@cin.ufpe.br', `Teste ${i + 1}`, 'Apenas um Teste');
       const id = i;
       const reply_id = i - 1;
       this.emails.push({
