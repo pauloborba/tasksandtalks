@@ -1,3 +1,19 @@
 <html>
     <h1>Projetos</h1>
+    <table>
+        <tr>
+           <td><label>Nome </label></td>
+           <td><input [(ngModel)]="projeto.nome" ></td>
+           <td><button (click)="criarProjeto(projeto)">Adicionar</button></td>
+        </tr>
+    </table>
+       
+    <table>
+        <tr *ngIf="projetos.length > 0">
+           <th>Projetos</th>
+        </tr>
+        <tr *ngFor="let p of projetos" name="projetoList">
+           <td name="nomelist"><button>{{p.nome}}</button></td>
+        </tr>
+    </table>
 </html>
