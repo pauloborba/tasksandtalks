@@ -7,9 +7,16 @@ export class ProjetoService {
     projetos: Projeto[] = [];
     media: number;
     quartil3: number;
+    jaOrdenou: boolean = false;
+    ordemAscendente: boolean;
 
     criar(projeto: Projeto): Projeto {
-        this.projetos.push(projeto.clone());
+        if(!projeto.arquivado){
+            this.projetos.push(projeto.clone());
+            if(this.jaOrdenou){
+                this.ordenar(this.ordemAscendente);
+            }
+        }
         this.atualizarEstatisticas();
         return projeto;
     }
@@ -21,6 +28,16 @@ export class ProjetoService {
             return 0;
         }
         return 1;
+    }
+
+    ordenar(ascending: boolean){
+        this.jaOrdenou = true;
+        this.ordemAscendente = ascending;
+        if(ascending){
+            this.projetos.sort((a, b) => a.sobrecarga - b.sobrecarga);
+        }else{
+            this.projetos.sort((a, b) => (-1) * (a.sobrecarga - b.sobrecarga));
+        }
     }
 
     atualizarEstatisticas(): void {

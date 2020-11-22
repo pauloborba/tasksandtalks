@@ -22,6 +22,10 @@ import { ProjetoService } from './projetos.service'
       this.projeto = new Projeto(false);
     }
 
+    ordenar(ascending: boolean){
+      this.projetoService.ordenar(ascending);
+    }
+
     getClass(projeto: Projeto){
       var index = this.projetoService.getIndexFromSobrecarga(projeto.sobrecarga);
 

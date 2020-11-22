@@ -11,6 +11,15 @@
     <table>
         <tr *ngIf="projetos.length > 0">
            <th>Projetos</th>
+           <td>
+            <div class="dropdown">
+                <button class="dropbtn">Ordenar</button>
+                <div class="dropdown-content">
+                  <button class="button" (click)="ordenar(false)">Maior sobrecarga</button>
+                  <button class="button" (click)="ordenar(true)">Menor sobrecarga</button>
+                </div>
+            </div>
+           </td>
         </tr>
         <tr *ngFor="let p of projetos" name="projetoList">
            <td name="nomelist"><button [ngClass] = "getClass(p)">{{p.nome}}</button></td>
