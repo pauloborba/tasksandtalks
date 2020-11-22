@@ -13,21 +13,22 @@ import { ProjetoService } from './projetos.service'
     constructor(private projetoService: ProjetoService) {}
 
     projetos: Projeto[]
-    projeto: Projeto = new Projeto();
+    projeto: Projeto = new Projeto(false);
     nomeDuplicado: boolean = false;
-    count: number = 0;
     
 
     criarProjeto(projeto: Projeto){
       this.projetoService.criar(projeto);
+      this.projeto = new Projeto(false);
     }
 
-    getClass(){
-      this.count++;
-      if(this.count%3 == 0){
+    getClass(projeto: Projeto){
+      var index = this.projetoService.getIndexFromSobrecarga(projeto.sobrecarga);
+
+      if(index < 0){
         return 'button button1';
       }
-      else if(this.count % 3 == 1){
+      else if(index == 0){
         return 'button button2'
       }
       return 'button button3'
