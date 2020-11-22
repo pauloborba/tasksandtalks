@@ -13,7 +13,7 @@
            <th>Projetos</th>
         </tr>
         <tr *ngFor="let p of projetos" name="projetoList">
-           <td name="nomelist"><button>{{p.nome}}</button></td>
+           <td name="nomelist"><button [ngClass] = "getClass()">{{p.nome}}</button></td>
         </tr>
     </table>
 </html>

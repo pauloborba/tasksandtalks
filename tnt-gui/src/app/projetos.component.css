@@ -1,0 +1,16 @@
+.button {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.button1 {background-color: #4CAF50; color: white;} 
+.button1:hover{ background-color: #3e8e41; }
+.button2 {background-color: #FFFF00; color: black;} 
+.button2:hover{background-color: #fffb0083;}
+.button3 {background-color: #f44336; color: white;} 
+.button3:hover{background-color: #f45236bd;}

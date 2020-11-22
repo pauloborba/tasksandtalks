@@ -15,11 +15,22 @@ import { ProjetoService } from './projetos.service'
     projetos: Projeto[]
     projeto: Projeto = new Projeto();
     nomeDuplicado: boolean = false;
+    count: number = 0;
     
 
     criarProjeto(projeto: Projeto){
       this.projetoService.criar(projeto);
-      this.projetos.push(projeto.clone());
+    }
+
+    getClass(){
+      this.count++;
+      if(this.count%3 == 0){
+        return 'button button1';
+      }
+      else if(this.count % 3 == 1){
+        return 'button button2'
+      }
+      return 'button button3'
     }
     
     ngOnInit() {

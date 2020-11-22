@@ -12,10 +12,6 @@ export class ProjetoService {
     }
 
     getProjetos(): Projeto[] { 
-        var projetos: Projeto[] = [];
-        for(let p of this.projetos){
-            projetos.push(p.clone());
-        }
-        return projetos;
+        return this.projetos;
      } 
 }
