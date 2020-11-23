@@ -17,10 +17,10 @@
            <th>Projetos</th>
            <td>
             <div class="dropdown">
-                <button class="dropbtn">Ordenar</button>
+                <button class="dropbtn" name="dropdown">Ordenar</button>
                 <div class="dropdown-content">
-                  <button class="button" (click)="ordenar(false)">Maior sobrecarga</button>
-                  <button class="button" (click)="ordenar(true)">Menor sobrecarga</button>
+                  <button class="button" (click)="ordenar(false)" name="descending">Maior sobrecarga</button>
+                  <button class="button" (click)="ordenar(true)" name="ascending">Menor sobrecarga</button>
                 </div>
             </div>
            </td>
