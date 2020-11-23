@@ -1,7 +1,7 @@
 import { Projeto } from '../common/projeto';
 
 export class RepositorioDeProjetos {
-    projetosAtivosPorMes : Map<string, number>;
+    projetosCriadosPorMes : Map<string, number>;
     projetosArquivadosPorMes : Map<string, number>;
     listaDeProjetos : Projeto[];
     adicionarProjeto(projeto : Projeto){};
@@ -9,8 +9,39 @@ export class RepositorioDeProjetos {
 
     constructor(){
         this.projetosArquivadosPorMes = new Map();
-        this.projetosAtivosPorMes = new Map();
+        this.projetosCriadosPorMes = new Map();
         this.listaDeProjetos = [];
+    }
+
+    getDuracaoMedia() : any{
+        var retorno = null;
+        var concluidos = 0;
+        var somaDias = 0;
+        //itera sobre a lista de projetos
+        for(let proj of this.listaDeProjetos){
+            //considera somente projetos concluidos
+            if(proj.arquivado){
+                concluidos++;
+                //duracao de um projeto concluido em milisegundos dividido pela quantidade de milisegundos de um dia
+                var duracaoEmDias = (proj.conclusao.getTime() - proj.criacao.getTime())/1000*60*60*24;
+                somaDias += duracaoEmDias;
+            }
+        }
+        if(concluidos > 0) retorno = (somaDias/concluidos);
+        return retorno;
+    }
+
+    getMediaDeCriacao() : any{
+        var retorno = null;
+        var somaProjsPorMes = 0;
+        //iterar sobre o conjunto de projetos criados por mes
+        for(let chave of this.projetosCriadosPorMes.keys()){
+            somaProjsPorMes += this.projetosCriadosPorMes.get(chave);
+        }
+        if(this.projetosCriadosPorMes.size > 0){
+            retorno = somaProjsPorMes/this.projetosCriadosPorMes.size;
+        }
+        return retorno;
     }
 
     atualizarAtributos(arquivou:boolean) : void{
@@ -21,8 +52,8 @@ export class RepositorioDeProjetos {
         }
         //confere se a atualizacao se refere a um projeto criado
         else{
-            this.atualizaMes(this.projetosAtivosPorMes);
-            this.preencherMesesZerados(this.projetosAtivosPorMes);
+            this.atualizaMes(this.projetosCriadosPorMes);
+            this.preencherMesesZerados(this.projetosCriadosPorMes);
         }
     }
 
