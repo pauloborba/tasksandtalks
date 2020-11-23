@@ -14,12 +14,17 @@ import { ProjetoService } from './projetos.service'
 
     projetos: Projeto[]
     projeto: Projeto = new Projeto(false);
+    sobrecarga: string;
     nomeDuplicado: boolean = false;
     
 
     criarProjeto(projeto: Projeto){
+      if(this.sobrecarga != ""){
+        projeto.sobrecarga = parseInt(this.sobrecarga);
+      }
       this.projetoService.criar(projeto);
       this.projeto = new Projeto(false);
+      this.sobrecarga = "";
     }
 
     ordenar(ascending: boolean){
