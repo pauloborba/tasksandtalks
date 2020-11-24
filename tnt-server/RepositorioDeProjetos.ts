@@ -17,6 +17,39 @@ export class RepositorioDeProjetos {
         this.listaDeProjetos = [];
     }
 
+    getAtivos() : Map<string, number>{
+        var retorno = null;
+        //atualiza map de projetos criados por mes (caso nao tenha os meses mais recentes)
+        this.preencherMesesZerados(this.projetosCriadosPorMes);
+        //vetor com chaves ordenadas cronologicamente
+        var chavesStr : string[] = Array.from(this.projetosCriadosPorMes.keys());
+        this.ordenaChavesCronologicamente(chavesStr);
+        var ativosPorMes : Map<string,number> = new Map();
+        //preencher map com ativos por mes
+        var ativos = 0;
+        for(let chave of this.projetosCriadosPorMes.keys()){
+            var criados = 0, deletados = 0, arquivados = 0;
+            if(this.projetosCriadosPorMes.has(chave)){
+                criados = this.projetosCriadosPorMes.get(chave);
+            }
+            if(this.projetosArquivadosPorMes.has(chave)){
+                arquivados = this.projetosArquivadosPorMes.get(chave);
+            }
+            if(this.ativosDeletadosPorMes.has(chave)){
+                deletados = this.ativosDeletadosPorMes.get(chave);
+            }
+            ativos = ativos + criados - arquivados - deletados;
+            ativosPorMes.set(chave, ativos);
+        }
+        return ativosPorMes;
+    }
+
+    ordenaChavesCronologicamente(chavesStr:string[]){
+        chavesStr.forEach(parseInt);
+        chavesStr.sort();
+        chavesStr.forEach(toString);
+    }
+
     getDuracaoMedia() : any{
         var retorno = null;
         var concluidos = 0;
