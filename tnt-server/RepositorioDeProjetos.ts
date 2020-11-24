@@ -17,7 +17,7 @@ export class RepositorioDeProjetos {
         this.listaDeProjetos = [];
     }
 
-    getPorcentagem(returnAtivos:boolean) : number{
+    getPorcentagem(returnAtivos:boolean) : number[]{
         var ativos = 0, arquivados = 0;
         for(let proj of this.listaDeProjetos){
             if(proj.arquivado) arquivados++;
@@ -28,8 +28,8 @@ export class RepositorioDeProjetos {
             porcAtivos = ativos*100/this.listaDeProjetos.length;
             porcArquivados = arquivados*100/this.listaDeProjetos.length;
         }
-        if(returnAtivos) return porcAtivos;
-        else return porcArquivados;
+        if(returnAtivos) return [porcAtivos, ativos];
+        else return [porcArquivados, arquivados];
     }
 
     getArquivados() : Map<string, number>{
