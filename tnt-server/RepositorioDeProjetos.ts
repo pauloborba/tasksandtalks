@@ -111,6 +111,8 @@ export class RepositorioDeProjetos {
     getMediaDeCriacao() : number{
         var retorno = null;
         var somaProjsPorMes = 0;
+        //atualiza map de projetos criados por mes (caso nao tenha os meses mais recentes)
+        this.preencherMesesZerados(this.projetosCriadosPorMes);
         //iterar sobre o conjunto de projetos criados por mes
         for(let chave of this.projetosCriadosPorMes.keys()){
             somaProjsPorMes += this.projetosCriadosPorMes.get(chave);
