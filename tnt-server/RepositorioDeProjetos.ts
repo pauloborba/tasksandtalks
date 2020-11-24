@@ -17,6 +17,31 @@ export class RepositorioDeProjetos {
         this.listaDeProjetos = [];
     }
 
+    getArquivados() : Map<string, number>{
+        var retorno = null;
+        //atualiza map de projetos arquivados por mes (caso nao tenha os meses mais recentes)
+        this.preencherMesesZerados(this.projetosArquivadosPorMes);
+        //vetor com chaves ordenadas cronologicamente
+        var chavesStr : string[] = Array.from(this.projetosArquivadosPorMes.keys());
+        this.ordenaChavesCronologicamente(chavesStr);
+        var arquivPorMes : Map<string,number> = new Map();
+        //preencher map com arquivados por mes
+        var arquiv = 0;
+        for(let chave of chavesStr){
+            var deletados = 0, arquivados = 0;
+            if(this.projetosArquivadosPorMes.has(chave)){
+                arquivados = this.projetosArquivadosPorMes.get(chave);
+            }
+            if(this.arquivadosDeletadosPorMes.has(chave)){
+                deletados = this.arquivadosDeletadosPorMes.get(chave);
+            }
+            arquiv = arquiv + arquivados - deletados;
+            console.log(arquivados);
+            arquivPorMes.set(chave, arquiv);
+        }
+        return arquivPorMes;
+    }
+
     getAtivos() : Map<string, number>{
         var retorno = null;
         //atualiza map de projetos criados por mes (caso nao tenha os meses mais recentes)
