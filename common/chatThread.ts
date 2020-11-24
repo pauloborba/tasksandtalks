@@ -3,14 +3,15 @@ import { Contexto } from '../tnt-server/contexto';
 
 export class ChatThread extends Contexto{
     threadName: string;
-    threadChats: Chat[] = [];
+    threadChats: Chat[] = [ {sender: "juan",messageContent:"ola",sendDate:new Date()},
+                            {sender: "julia",messageContent:"oie",sendDate:new Date()}];
 
    constructor(){
        super();
    }
 
    addChat(newChat: Chat): void{
-
+    this.threadChats.push(newChat)
    }
 
    read(): void{
@@ -18,6 +19,6 @@ export class ChatThread extends Contexto{
    }
 
    getThreadChats(): Chat[]{
-       return null;
+    return this.threadChats;
    }
 }
