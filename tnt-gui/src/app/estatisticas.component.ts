@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'estatisticas',
+    selector: 'Estatisticas',
     templateUrl: './estatisticas.component.html',
     styleUrls: ['./estatisticas.component.css']
   })
-  export class estatisticasComponent implements OnInit {
+  export class EstatisticasComponent implements OnInit {
     constructor() {
 
     }
