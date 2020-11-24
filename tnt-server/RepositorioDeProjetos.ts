@@ -1,6 +1,8 @@
 import { Projeto } from '../common/projeto';
 
 export class RepositorioDeProjetos {
+    ativosDeletadosPorMes : Map<string, number>;
+    arquivadosDeletadosPorMes : Map<string, number>;
     projetosCriadosPorMes : Map<string, number>;
     projetosArquivadosPorMes : Map<string, number>;
     listaDeProjetos : Projeto[];
@@ -10,6 +12,8 @@ export class RepositorioDeProjetos {
     constructor(){
         this.projetosArquivadosPorMes = new Map();
         this.projetosCriadosPorMes = new Map();
+        this.ativosDeletadosPorMes = new Map();
+        this.arquivadosDeletadosPorMes = new Map();
         this.listaDeProjetos = [];
     }
 
@@ -44,16 +48,24 @@ export class RepositorioDeProjetos {
         return retorno;
     }
 
-    atualizarAtributos(arquivou:boolean) : void{
+    atualizarAtributos(arquivou:boolean, deletou:boolean) : void{
         //confere se a atualizacao se refere a um projeto arquivado
         if(arquivou){
-            this.atualizaMes(this.projetosArquivadosPorMes);
-            this.preencherMesesZerados(this.projetosArquivadosPorMes);
+            if(deletou){
+                this.atualizaMes(this.arquivadosDeletadosPorMes);
+            }else{
+                this.atualizaMes(this.projetosArquivadosPorMes);
+                this.preencherMesesZerados(this.projetosArquivadosPorMes);
+            }
         }
         //confere se a atualizacao se refere a um projeto criado
         else{
-            this.atualizaMes(this.projetosCriadosPorMes);
-            this.preencherMesesZerados(this.projetosCriadosPorMes);
+            if(deletou){
+                this.atualizaMes(this.ativosDeletadosPorMes);
+            }else{
+                this.atualizaMes(this.projetosCriadosPorMes);
+                this.preencherMesesZerados(this.projetosCriadosPorMes);
+            }
         }
     }
 
