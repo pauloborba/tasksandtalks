@@ -11,8 +11,8 @@ export class EstatisticasService {
 
     constructor(private http: HttpClient) {}
 
-    getAtivos(): Observable<Map<string,number>> {
-        return this.http.get<Map<string,number>>(this.tntURL + "/projetosEstat/ativos")
+    getAtivos(): Observable<(string[] | number[])[]> {
+        return this.http.get<(string[] | number[])[]>(this.tntURL + "/projetosEstat/ativos")
                   .pipe(
                      retry(2)
                    );

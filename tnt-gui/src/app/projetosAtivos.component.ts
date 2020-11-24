@@ -12,7 +12,7 @@ import {EstatisticasService} from './estatisticas.service';
     mensagemSobreAtivos: string;
     porcentagemAtivos: string;
     listaPorcQuant: number[];
-    mapAtivos: Map<string,number>;
+    listaChavesQuant: (string[] | number[])[];
 
     inicializar(lst:number[]){
       this.listaPorcQuant = lst;
@@ -28,7 +28,7 @@ import {EstatisticasService} from './estatisticas.service';
     ngOnInit() {
       this.estatisticasService.getAtivos()
       .subscribe(
-          mapAt => { this.mapAtivos = mapAt },
+          at => { this.listaChavesQuant = at },
           msg => { alert(msg.message); }
       );
       this.estatisticasService.getPorcentagem(true)

@@ -32,7 +32,7 @@ export class RepositorioDeProjetos {
         else return [porcArquivados, arquivados];
     }
 
-    getArquivados() : Map<string, number>{
+    getArquivados() : (string[] | number[])[]{
         var retorno = null;
         //atualiza map de projetos arquivados por mes (caso nao tenha os meses mais recentes)
         this.preencherMesesZerados(this.projetosArquivadosPorMes);
@@ -54,10 +54,11 @@ export class RepositorioDeProjetos {
             console.log(arquivados);
             arquivPorMes.set(chave, arquiv);
         }
-        return arquivPorMes;
+        var listaChavesQuant = [(Array.from(arquivPorMes.keys())), (Array.from(arquivPorMes.values()))];
+        return listaChavesQuant;
     }
 
-    getAtivos() : Map<string, number>{
+    getAtivos() : (string[] | number[])[]{
         var retorno = null;
         //atualiza map de projetos criados por mes (caso nao tenha os meses mais recentes)
         this.preencherMesesZerados(this.projetosCriadosPorMes);
@@ -81,7 +82,8 @@ export class RepositorioDeProjetos {
             ativos = ativos + criados - arquivados - deletados;
             ativosPorMes.set(chave, ativos);
         }
-        return ativosPorMes;
+        var listaChavesQuant = [(Array.from(ativosPorMes.keys())), (Array.from(ativosPorMes.values()))];
+        return listaChavesQuant;
     }
 
     ordenaChavesCronologicamente(chavesStr:string[]){
