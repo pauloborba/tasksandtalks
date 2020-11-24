@@ -13,6 +13,37 @@ import {EstatisticasService} from './estatisticas.service';
     porcentagemAtivos: string;
     listaPorcQuant: number[];
     listaChavesQuant: (string[] | number[])[];
+    listaMeses: (string[] | number[]);
+    listaAtivosPorMes: (string[] | number[]);
+    //atributos do grafico
+    barChartOptions;
+    barChartType;
+    barChartLegend;
+    barChartData;
+    barChartLabels;
+
+    ajustaDatas(datas){
+      for(let i=0; i<datas.length; i++){
+        datas[i] = datas[i].substr(4,2) + '/' + datas[i].substr(0,4);
+      }
+    }
+
+    inicializarGrafico(at:(string[] | number[])[]){
+      this.listaMeses = at[0];
+      this.ajustaDatas(this.listaMeses);
+      this.listaAtivosPorMes = at[1];
+
+      this.barChartOptions = {
+        scaleShowVerticalLines: false,
+        responsive: true
+      };
+      this.barChartLabels = this.listaMeses;
+      this.barChartType = 'line';
+      this.barChartLegend = true;
+      this.barChartData = [
+        {data: this.listaAtivosPorMes, label: 'Projetos Ativos'}
+      ];
+    }
 
     inicializar(lst:number[]){
       this.listaPorcQuant = lst;
@@ -28,7 +59,7 @@ import {EstatisticasService} from './estatisticas.service';
     ngOnInit() {
       this.estatisticasService.getAtivos()
       .subscribe(
-          at => { this.listaChavesQuant = at },
+          at => this.inicializarGrafico(at),
           msg => { alert(msg.message); }
       );
       this.estatisticasService.getPorcentagem(true)
