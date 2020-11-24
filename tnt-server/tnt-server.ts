@@ -16,6 +16,10 @@ tntserver.use(allowCrossDomain);
 
 tntserver.use(bodyParser.json());
 
+tntserver.get('/projetosEstat/arquivados', function (req:express.Request, res:express.Response) {
+    res.send(JSON.stringify(repositorioDeProjetos.getArquivados()));
+})
+
 tntserver.get('/projetosEstat/ativos', function (req:express.Request, res:express.Response) {
     res.send(JSON.stringify(repositorioDeProjetos.getAtivos()));
 })

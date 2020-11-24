@@ -11,6 +11,13 @@ export class EstatisticasService {
 
     constructor(private http: HttpClient) {}
 
+    getArquivados(): Observable<(string[] | number[])[]> {
+      return this.http.get<(string[] | number[])[]>(this.tntURL + "/projetosEstat/arquivados")
+                .pipe(
+                   retry(2)
+                 );
+    }
+
     getAtivos(): Observable<(string[] | number[])[]> {
         return this.http.get<(string[] | number[])[]>(this.tntURL + "/projetosEstat/ativos")
                   .pipe(
