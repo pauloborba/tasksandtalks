@@ -23,6 +23,10 @@ import { ProjetosComponent } from './projetos.component';
       {
         path: 'eventos',
         component: EventosComponent
+      },
+      {
+        path: 'projetos',
+        component: ProjetosComponent
       }
     ])
   ],
