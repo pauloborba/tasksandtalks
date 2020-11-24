@@ -51,7 +51,6 @@ export class RepositorioDeProjetos {
                 deletados = this.arquivadosDeletadosPorMes.get(chave);
             }
             arquiv = arquiv + arquivados - deletados;
-            console.log(arquivados);
             arquivPorMes.set(chave, arquiv);
         }
         var listaChavesQuant = [(Array.from(arquivPorMes.keys())), (Array.from(arquivPorMes.values()))];
