@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { EstatisticasComponent } from './estatisticas.component';
 import { DadosGeraisComponent } from './dadosGerais.component';
 import { ProjetosAtivosComponent } from './projetosAtivos.component';
 import { ProjetosArquivadosComponent } from './projetosArquivados.component';
+import { EstatisticasService } from './estatisticas.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ProjetosArquivadosComponent } from './projetosArquivados.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'estatisticas',
@@ -39,7 +42,7 @@ import { ProjetosArquivadosComponent } from './projetosArquivados.component';
       }
     ])
   ],
-  providers: [],
+  providers: [EstatisticasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
