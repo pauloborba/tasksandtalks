@@ -5,18 +5,23 @@
     </h1>    
 
     <p class = "Paragrafo1">
-        Insira um intervalo de tempo no formato de "Dia/Mes/Anos" :
+        Insira uma data no formato de "Dia/Mes/Anos":
     </p>
-    <input  class="InputText1">
-    <input class="InputText2">
-    <button class="button1"> Confirmar </button>
+    <input [(ngModel)]="dataInput" class="InputText1">
+    <p class="Paragrafo7"> Insira a tarefa à qual os eventos serão associados:</p>
+    <input [(ngModel)]="tarefa1" class="InputText7">
+    <button class="button1" (click)="associarEventosPorData(dataInput)"> Confirmar </button>
+
 
     <p class="Paragrafo2">
         Ou insira o link do Google Calendar referente ao evento que deseja importar:
     </p>
-    <input  class="InputText3">
-    <button class="button2"> Confirmar </button>
+    <input [(ngModel)]="linkCalendar" class="InputText3">
+    <p class="Paragrafo8"> Insira a tarefa à qual o evento será associado:</p>
+    <input [(ngModel)]="tarefa2" class="InputText8">
+    <button class="button2" (click)="associarEventosPorLink(linkCalendar)"> Confirmar </button>
 
+<!-- 
     <p class="Paragrafo3">
         Criar evento:
     </p>
@@ -34,27 +39,27 @@
 
     <input [(ngModel)]="event.data" class="InputText5">
 
-    <input [(ngModel)]="event.tarefa" class="InputText6">
+    <input [(ngModel)]="event.hora" class="InputText6">
     
-    <button class="button3" (click)="gravar(event)">Adicionar</button>
+    <button class="button3" (click)="listarEventos()">Listar Eventos</button>
 
     </tr>
-    
 </table>
-<tr class="tabelaEventos" *ngIf="events.length > 0">
-    <th>Nome</th>
-    <th>Data</th>
-    <th>Tarefa</th>
-</tr>
+-->
+<button class="button3" (click)="listarEventos()">Listar Eventos</button>
 
-<tr *ngFor="let i of events" class="tabelaEventosLista" >
-    <td name="nomeList">{{i.nome}}</td>
-    <td name="dataList">{{i.data}}</td>
-    <td name="tarefaLista">{{i.tarefa}}</td>
- </tr>
 
-<table>
-
-</table>
+<table *ngIf="mostrarLista == true" class="tabelaEventos">
+    <tr>
+       <th>Nome</th>
+       <th>Data</th>
+       <th>Hora</th>
+    </tr>
+    <tr *ngFor="let a of events" >
+       <td >{{a.nome}}</td>
+       <td >{{a.data}}</td>
+       <td>{{a.hora}}</td>
+    </tr>
+    </table>
 
 </html>

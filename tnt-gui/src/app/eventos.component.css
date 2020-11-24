@@ -24,29 +24,53 @@ h1{
     top: 28%;
 
 }
+.Paragrafo7{
+    position: absolute;
+    left: 48%;
+    top: 32%;
+}
+
+.InputText7{
+    position: absolute;
+    left: 48%;
+    top: 38%;
+}
 
 .button1{
     position: absolute;
-    left: 72%;
-    top: 28%;
+    left: 60%;
+    top: 38%;
 }
 
 .Paragrafo2{
     position: absolute;
     left: 48%;
-    top: 34%;
+    top: 50%;
 }
 
 .InputText3{
     position: absolute;
     left: 48%;
-    top: 40%;
+    top: 56%;
 }
+
+.Paragrafo8{
+    position: absolute;
+    left: 48%;
+    top: 60%;
+}
+
+.InputText8{
+    position: absolute;
+    left: 48%;
+    top: 66%;
+}
+
 
 .button2{
     position: absolute;
-    left: 72%;
-    top: 40%;
+    left: 60%;
+    top: 66%;
 }
 
 .Paragrafo3{
@@ -94,27 +118,33 @@ h1{
 
 .button3{
     position: absolute;
-    left: 72%;
+    left: 48%;
     top: 78%;
 }
 
 .tabelaEventos{
     position: absolute;
-    left: 40%;
-    top: 85%;
+    top: 84%;
+    left: 48%;
+    background-color: red;
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
 
 }
-.tabelaEventos th{
-    width: auto;
+.tabelaEventos lr{
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: red;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
 
 }
-.tabelaEventosLista{
-    position: absolute;
-    left: 50%;
-    top: 89%;
 
-}
-
-.tabelaEventosLista td{
-    width: 350px;
+.tabelaEventos span{
+    width: 100px;
 }
