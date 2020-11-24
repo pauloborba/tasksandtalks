@@ -90,7 +90,7 @@ export class RepositorioDeProjetos {
         chavesStr.forEach(toString);
     }
 
-    getDuracaoMedia() : any{
+    getDuracaoMedia() : number{
         var retorno = null;
         var concluidos = 0;
         var somaDias = 0;
@@ -108,7 +108,7 @@ export class RepositorioDeProjetos {
         return retorno;
     }
 
-    getMediaDeCriacao() : any{
+    getMediaDeCriacao() : number{
         var retorno = null;
         var somaProjsPorMes = 0;
         //iterar sobre o conjunto de projetos criados por mes
