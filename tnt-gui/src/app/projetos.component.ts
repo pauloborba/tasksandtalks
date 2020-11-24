@@ -17,6 +17,7 @@ import { ProjetoService } from './projetos.service'
     projeto: Projeto = new Projeto(false);
     sobrecarga: string;
     nomeDuplicado: boolean = false;
+    isTesting: boolean = false;
     private projetoService: ProjetoService;    
 
     criarProjeto(projeto: Projeto){

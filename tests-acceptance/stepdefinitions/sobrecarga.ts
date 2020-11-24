@@ -7,6 +7,7 @@ let sameName = ((elem, name) => elem.element(by.name('nomelist')).getText().then
 
 async function cadastrarProjeto(name, sobrecarga) {
     await $("input[name='namebox']").sendKeys(<string> name);
+    await $("input[name='testing']").click();
     await $("input[name='sobrecargabox']").sendKeys(<string> sobrecarga);
     await element(by.buttonText('Adicionar')).click();
 }
