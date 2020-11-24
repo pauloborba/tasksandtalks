@@ -1,1 +1,120 @@
+h1{
 
+    color: rgb(13, 47, 66);
+    position: relative;
+    left: 48%;
+}
+
+.Paragrafo1{
+    position: absolute;
+    left: 48%;
+    top: 22%;
+}
+
+.InputText1{
+    position: absolute;
+    left: 48%;
+    top: 28%;
+
+}
+
+.InputText2{
+    position: absolute;
+    left: 60%;
+    top: 28%;
+
+}
+
+.button1{
+    position: absolute;
+    left: 72%;
+    top: 28%;
+}
+
+.Paragrafo2{
+    position: absolute;
+    left: 48%;
+    top: 34%;
+}
+
+.InputText3{
+    position: absolute;
+    left: 48%;
+    top: 40%;
+}
+
+.button2{
+    position: absolute;
+    left: 72%;
+    top: 40%;
+}
+
+.Paragrafo3{
+    position: absolute;
+    left: 48%;
+    top: 50%;
+}
+
+.Paragrafo4{
+    position: absolute;
+    left: 48%;
+    top: 58%;
+}
+
+.InputText4{
+    position: absolute;
+    left: 60%;
+    top: 60%;
+}
+
+.Paragrafo5{
+    position: absolute;
+    left: 48%;
+    top: 64%;
+}
+
+.InputText5{
+    position: absolute;
+    left: 60%;
+    top: 66%;
+}
+
+.Paragrafo6{
+    position: absolute;
+    left: 48%;
+    top: 70%;
+}
+
+.InputText6{
+    position: absolute;
+    left: 60%;
+    top: 72%;
+}
+
+
+.button3{
+    position: absolute;
+    left: 72%;
+    top: 78%;
+}
+
+.tabelaEventos{
+    position: absolute;
+    left: 40%;
+    top: 85%;
+
+}
+.tabelaEventos th{
+    width: auto;
+
+}
+.tabelaEventosLista{
+    position: absolute;
+    left: 50%;
+    top: 89%;
+
+}
+
+.tabelaEventosLista td{
+    width: 350px;
+}

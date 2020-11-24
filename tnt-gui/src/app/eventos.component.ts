@@ -1,6 +1,8 @@
 import { newArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-
+import { NgModule } from '@angular/core';
+import { Event } from '../../../common/event';
+import { EventService } from './event.service';
 
 @Component({
   selector: 'eventos',
@@ -10,15 +12,12 @@ import { Component, OnInit } from '@angular/core';
 
 
 
-export class EventosComponent implements OnInit{
+export class EventosComponent{
+  event: Event = {nome: "", data: "", tarefa: ""};
+  events: Event[] = [];
 
-    constructor() {
-
-    }
-
-    ngOnInit() {
-
-    }
-
-    title = 'Eventos'
+  gravar(a: Event): void {
+    this.events.push(a);
+    this.event = {nome: "", data: "", tarefa: ""};
+ }
 }
