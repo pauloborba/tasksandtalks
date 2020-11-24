@@ -1,12 +1,17 @@
 import { Projeto } from '../../common/projeto'
 import { ProjetoService } from '../../tnt-gui/src/app/projetos.service'
 
+function setSobrecargaDeProjeto(projeto: Projeto, sobrecarga: number){
+    projeto.sobrecarga = sobrecarga;
+    return projeto;
+}
+
 describe("O nível de sobrecarga", () => {
     var projeto: Projeto;
     var projetoService: ProjetoService;
 
     beforeEach(() => {
-        projeto = new Projeto(false);
+        projeto = new Projeto(true);
         projetoService = new ProjetoService();
     })
 
@@ -18,24 +23,15 @@ describe("O nível de sobrecarga", () => {
     })
 
     it("calcula nível de sobrecarga relativo corretamente", () => {
-        //Adicionar projeto
         var sobrecarga: number[] = [10, 20, 30, 40];
+        var expectedValues: number[] = [-1, -1, 0, 1];
 
-        projeto.sobrecarga = sobrecarga[0];
-        projetoService.criar(projeto);       
+        for(let i = 0; i < sobrecarga.length; i++){
+            projetoService.criar(setSobrecargaDeProjeto(projeto, sobrecarga[i]));
+        }
 
-        projeto.sobrecarga = sobrecarga[1];
-        projetoService.criar(projeto);
-
-        projeto.sobrecarga = sobrecarga[2];
-        projetoService.criar(projeto);
-
-        projeto.sobrecarga = sobrecarga[3];
-        projetoService.criar(projeto);
-
-        expect(projetoService.getIndexFromSobrecarga(sobrecarga[0])).toBe(-1);
-        expect(projetoService.getIndexFromSobrecarga(sobrecarga[1])).toBe(-1);
-        expect(projetoService.getIndexFromSobrecarga(sobrecarga[2])).toBe(0);
-        expect(projetoService.getIndexFromSobrecarga(sobrecarga[3])).toBe(1);
+        for(let i = 0; i < sobrecarga.length; i++){
+            expect(projetoService.getIndexFromSobrecarga(sobrecarga[i])).toBe(expectedValues[i]);
+        }
     })
 })
