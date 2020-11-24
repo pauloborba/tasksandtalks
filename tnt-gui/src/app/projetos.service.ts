@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
-
 import { Projeto } from '../../../common/projeto';
 
-@Injectable()
 export class ProjetoService {
     projetos: Projeto[] = [];
     media: number;
     quartil3: number;
     jaOrdenou: boolean = false;
     ordemAscendente: boolean;
+
+    constructor(){
+        this.projetos = [];
+        this.jaOrdenou = false;
+    }
 
     criar(projeto: Projeto): Projeto {
         if(!projeto.arquivado){

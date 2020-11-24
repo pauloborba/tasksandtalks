@@ -7,6 +7,9 @@ export class Projeto {
     arquivado: boolean;
     tarefas: Tarefa[] = [];
     sobrecarga: number = -1;
+    qtdTarefas: number = 0;
+    emailsNaoLidos: number = 0;
+    chatsNaoLidos: number = 0;
 
     constructor(cloning: boolean){
         this.clear(cloning);
@@ -19,6 +22,9 @@ export class Projeto {
         this.arquivado = false;
         this.tarefas = [];
         if(!cloning){
+            this.qtdTarefas = this.getQuantidadeTarefas();
+            this.emailsNaoLidos = this.getEmailsNaoLidos();
+            this.chatsNaoLidos = this.getChatsNaoLidos();
             this.sobrecarga = this.getSobrecarga(2, 1, 1);
         }
     }
@@ -37,9 +43,9 @@ export class Projeto {
     getSobrecarga(pesoTasks: number, pesoChats: number, pesoMails: number): number {
         if(this.sobrecarga == -1){
             console.log("sobrecarga:");
-            var tarefas = this.getQuantidadeTarefas();
-            var emails = this.getEmailsNaoLidos();
-            var chats = this.getChatsNaoLidos();
+            var tarefas = this.qtdTarefas;
+            var emails = this.emailsNaoLidos;
+            var chats = this.chatsNaoLidos;
             console.log(tarefas, emails, chats);
             this.sobrecarga = (pesoTasks * tarefas + pesoChats * chats + pesoMails * emails) / (pesoMails + pesoTasks + pesoChats);
             console.log(this.sobrecarga);
@@ -47,12 +53,26 @@ export class Projeto {
         return this.sobrecarga;
     }
 
+    setQuantidadeTarefas(t: number){
+        console.log(t);
+        this.qtdTarefas = t;
+    }
+
     getQuantidadeTarefas(): number {
         return this.randomInt(0, 10);
     }
 
+    setEmailsNaoLidos(e: number){
+        this.emailsNaoLidos = e;
+    }
+
     getEmailsNaoLidos(): number {
         return this.randomInt(0, 50);
+    }
+
+    setChatsNaoLidos(c: number){
+        console.log(c);
+        this.chatsNaoLidos = c;
     }
 
     getChatsNaoLidos(): number {

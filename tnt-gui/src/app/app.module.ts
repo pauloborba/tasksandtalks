@@ -24,7 +24,7 @@ import { ProjetoService } from './projetos.service'
       }
     ])
   ],
-  providers: [ProjetoService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

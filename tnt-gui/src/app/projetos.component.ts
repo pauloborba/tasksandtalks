@@ -10,16 +10,17 @@ import { ProjetoService } from './projetos.service'
   })
   
   export class ProjetosComponent implements OnInit {
-    constructor(private projetoService: ProjetoService) {}
+
+    constructor() {}
 
     projetos: Projeto[]
     projeto: Projeto = new Projeto(false);
     sobrecarga: string;
     nomeDuplicado: boolean = false;
-    
+    private projetoService: ProjetoService;    
 
     criarProjeto(projeto: Projeto){
-      if(this.sobrecarga != ""){
+      if(this.sobrecarga){
         projeto.sobrecarga = parseInt(this.sobrecarga);
       }
       this.projetoService.criar(projeto);
@@ -44,6 +45,7 @@ import { ProjetoService } from './projetos.service'
     }
     
     ngOnInit() {
+      this.projetoService = new ProjetoService();
       this.projetos = this.projetoService.getProjetos();
     }
 }
