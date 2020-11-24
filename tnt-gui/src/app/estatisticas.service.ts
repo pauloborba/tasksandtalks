@@ -1,5 +1,5 @@
 import { Injectable }    from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 
@@ -10,6 +10,21 @@ export class EstatisticasService {
     private tntURL = 'http://localhost:3000';
 
     constructor(private http: HttpClient) {}
+
+    getAtivos(): Observable<Map<string,number>> {
+        return this.http.get<Map<string,number>>(this.tntURL + "/projetosEstat/ativos")
+                  .pipe(
+                     retry(2)
+                   );
+    }
+
+    getPorcentagem(returnAtivos:boolean): Observable<number[]> {
+        let params = new HttpParams().set("returnAtivos",(returnAtivos.toString()));
+        return this.http.get<number[]>(this.tntURL + "/projetosEstat/porcentagem"+':'+returnAtivos.toString(), {params: params})
+                  .pipe(
+                     retry(2)
+                   );
+    }
 
     getMediaCriacao(): Observable<number> {
         return this.http.get<number>(this.tntURL + "/dadosGerais/mediaCriacao")

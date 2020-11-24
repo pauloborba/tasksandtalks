@@ -16,6 +16,15 @@ tntserver.use(allowCrossDomain);
 
 tntserver.use(bodyParser.json());
 
+tntserver.get('/projetosEstat/ativos', function (req:express.Request, res:express.Response) {
+    res.send(JSON.stringify(repositorioDeProjetos.getAtivos()));
+})
+
+tntserver.get('/projetosEstat/porcentagem:returnAtivos', function (req:express.Request, res:express.Response) {
+    var returnAtivos = (req.params.returnAtivos.search('true') > 0);
+    res.send(JSON.stringify(repositorioDeProjetos.getPorcentagem(returnAtivos)));
+})
+
 tntserver.get('/dadosGerais/duracaoMedia', function (req:express.Request, res:express.Response) {
     res.send(JSON.stringify(repositorioDeProjetos.getDuracaoMedia()));
 })
