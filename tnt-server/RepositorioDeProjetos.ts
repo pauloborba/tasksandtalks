@@ -27,7 +27,7 @@ export class RepositorioDeProjetos {
         var ativosPorMes : Map<string,number> = new Map();
         //preencher map com ativos por mes
         var ativos = 0;
-        for(let chave of this.projetosCriadosPorMes.keys()){
+        for(let chave of chavesStr){
             var criados = 0, deletados = 0, arquivados = 0;
             if(this.projetosCriadosPorMes.has(chave)){
                 criados = this.projetosCriadosPorMes.get(chave);
