@@ -7,6 +7,24 @@
 </head>
 <body>
     <h2>Projetos Arquivados</h2>
-
+    <div>
+        <table>
+            <tr>
+            <th>{{porcentagemArquivados}}</th>
+            <th>{{mensagemSobreArquivados}}</th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <div style="display: block;">
+            <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+            </canvas>
+        </div>
+    </div>
 </body>
 </html>
