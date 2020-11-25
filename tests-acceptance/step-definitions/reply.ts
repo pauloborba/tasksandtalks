@@ -9,4 +9,16 @@ defineSupportCode(function ({ Given, When, Then }) {
         const sectionTitle = element(by.id('section-title'));
         await expect(sectionTitle.getText()).to.eventually.equal(pageName);
     })
+
+    Given(/^Eu posso ver um email com o assunto "([^\"]*)"$/, async (emailSubject) => {
+        const emails: ElementArrayFinder = element.all(by.id('email-subject'));
+        await emails;
+
+        const emailSelected = emails.filter((email) => {
+            return email.getText().then(subject => subject === emailSubject);
+        })
+        await emailSelected;
+
+        await emailSelected.then(subject => expect(Promise.resolve(subject.length)).to.eventually.equal(1));
+    })
 })
