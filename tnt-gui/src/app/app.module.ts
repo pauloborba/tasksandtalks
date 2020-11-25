@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos.component';
 import { ProjetosComponent } from './projetos.component';
+import { TarefaComponent } from './tarefa.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,12 @@ import { ProjetosComponent } from './projetos.component';
       {
         path: 'projetos',
         component: ProjetosComponent
+      },
+      {
+        path: 'projetos/tarefas',
+        component: TarefaComponent
       }
+
     ])
   ],
   providers: [],
