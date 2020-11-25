@@ -1,11 +1,18 @@
 <html>
 <div class="chatThread" id="myForm">
-    <form class="form-container">
-      <h1>Chat</h1>
-      <div class="chat_message" *ngFor= "let c of chats">
-        <p>{{c.sender}}: {{c.messageContent}}</p>
-        <span class="time-right">{{c.sendDate}}</span>
+    <div class="chat_container">
+      <h1 class="chat_title">Chat</h1>
+      <div class = scroll_area>
+        <div class="chat_message" *ngFor= "let c of chats">
+          <p>{{c.sender}}: {{c.messageContent}}</p>
+          <span class="time-right">{{c.sendDate}}</span>
+        </div>
       </div>
-    </form>
-  </div> 
+      <div class = send_area>
+        <input placeholder="Seu nome..." [(ngModel)]="chat.sender" required>
+        <textarea placeholder="Sua mensagem..." [(ngModel)]="chat.messageContent" required></textarea>
+        <button (click)="sendMessage(chat)">Enviar</button>
+      </div>
+    </div> 
+</div>
 </html>
