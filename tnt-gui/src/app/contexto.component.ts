@@ -9,11 +9,28 @@ import { ContextoService } from './contexto.service';
     styleUrls: ['./contexto.component.css']
 })
 export class ContextoComponent implements OnInit {
+    chat: Chat = new Chat();
     chats: Chat[] = [];
     constructor(private contextoService: ContextoService) {
 
     }
-   
+    
+    sendMessage(c: Chat): void {
+      if(c.sender!="" && c.messageContent!=""){
+        c.sendDate = new Date();
+        this.contextoService.newMsg(c)
+              .subscribe(
+                ar => {
+                  if (ar){
+                    this.chats.push(ar);
+                    this.chat = new Chat();
+                  }
+                  },
+                msg => { alert(msg.message); }
+              );
+      }
+   } 
+
     ngOnInit(): void {
       this.contextoService.getChat()
              .subscribe(

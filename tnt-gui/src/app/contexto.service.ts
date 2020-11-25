@@ -12,6 +12,14 @@ export class ContextoService {
 
     constructor(private http: HttpClient) {}
 
+    newMsg(chat: Chat): Observable<Chat> {
+        return this.http.post<any>(this.tntURL + "/chat", chat, {headers: this.headers})
+                 .pipe( 
+                    retry(2),
+                    map( res => {if (res.success) {return chat;} else {return null;}} )
+                  ); 
+      }
+
     getChat(): Observable<Chat[]> {
         return this.http.get<Chat[]>(this.tntURL + "/chat")
               .pipe(
