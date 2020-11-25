@@ -10,7 +10,7 @@
     <input [(ngModel)]="dataInput" class="InputText1">
     <p class="Paragrafo7"> Insira a tarefa à qual os eventos serão associados:</p>
     <input [(ngModel)]="tarefa1" class="InputText7">
-    <button class="button1" (click)="associarEventosPorData(dataInput)"> Confirmar </button>
+    <button class="button1" (click)="associarEventosPorData(dataInput, tarefa1)"> Confirmar </button>
 
 
     <p class="Paragrafo2">
@@ -19,7 +19,7 @@
     <input [(ngModel)]="linkCalendar" class="InputText3">
     <p class="Paragrafo8"> Insira a tarefa à qual o evento será associado:</p>
     <input [(ngModel)]="tarefa2" class="InputText8">
-    <button class="button2" (click)="associarEventosPorLink(linkCalendar)"> Confirmar </button>
+    <button class="button2" (click)="associarEventosPorLink(linkCalendar, tarefa2)"> Confirmar </button>
 
 <!-- 
     <p class="Paragrafo3">
@@ -54,11 +54,13 @@
        <th>Nome</th>
        <th>Data</th>
        <th>Hora</th>
+       <th>Tarefa</th>
     </tr>
     <tr *ngFor="let a of events" >
        <td >{{a.nome}}</td>
        <td >{{a.data}}</td>
        <td>{{a.hora}}</td>
+       <td>{{a.tarefas}}</td>
     </tr>
     </table>
 
