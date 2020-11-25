@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tnt-gui"
+    }
+  },
+  "defaultProject": "tnt-gui",
+  "cli": {
+    "analytics": false
+  }
 }

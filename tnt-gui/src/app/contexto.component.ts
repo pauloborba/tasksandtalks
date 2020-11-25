@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Contexto } from '../../../common/contexto';
+import { ThreadComponent } from './thread.component';
+
+
+var threadprincipal: ThreadComponent = new ThreadComponent();
 
 @Component({
     selector: 'app-contexto',

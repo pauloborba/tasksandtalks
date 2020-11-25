@@ -1,4 +1,4 @@
-import { Contexto } from './common/contexto';
+import { Contexto } from './contexto';
 
 export class Tarefa {
   descricao: string;
