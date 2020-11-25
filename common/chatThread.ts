@@ -3,15 +3,18 @@ import { Contexto } from '../tnt-server/contexto';
 
 export class ChatThread extends Contexto{
     threadName: string;
-    threadChats: Chat[] = [ {sender: "juan",messageContent:"ola",sendDate:new Date()},
-                            {sender: "julia",messageContent:"oie",sendDate:new Date()}];
+    threadChats: Chat[] = [];
 
    constructor(){
        super();
    }
 
-   addChat(newChat: Chat): void{
-    this.threadChats.push(newChat)
+   addChat(newChat: Chat): Chat{
+    var result: Chat = null;
+    result = new Chat();
+    result.copyFrom(newChat);
+    this.threadChats.push(result);
+    return result;
    }
 
    read(): void{
