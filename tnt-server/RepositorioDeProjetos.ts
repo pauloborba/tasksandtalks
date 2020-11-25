@@ -149,9 +149,11 @@ export class RepositorioDeProjetos {
         //encontra a chave para o objeto map (mes + ano)
         var date = new Date();
         //chave dos maps => "ano(number)mes(number)"
-        var mes = date.getMonth().toPrecision(2);
+        var mes = date.getMonth()+1;
         var ano = date.getFullYear();
-        var chave = ano.toString() + mes.toString();
+        var chave;
+        if(mes < 10) chave = ano.toString() + '0' + mes.toString();
+        else chave = ano.toString() + mes.toString();
 
         //se a chave ja existe (se ja existem projetos nesse mes)
         if(mapProjetos.has(chave)){
@@ -171,7 +173,7 @@ export class RepositorioDeProjetos {
 
         var data = new Date();
         var anoRecente = data.getFullYear();
-        var mesRecente = data.getMonth();
+        var mesRecente = data.getMonth()+1;
         
         if(anoInicial == anoRecente) ultimoMes = mesRecente;
         else ultimoMes = 12;
@@ -204,7 +206,7 @@ export class RepositorioDeProjetos {
         //encontrar data mais antiga em um conjunto de chaves
         var data = new Date();
         var ano = data.getFullYear();
-        var mes = data.getMonth();
+        var mes = data.getMonth()+1;
         var mesInicial = mes, anoInicial = ano;
 
         var chaves = objMap.keys();
