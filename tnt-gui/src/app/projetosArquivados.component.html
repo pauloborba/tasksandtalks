@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos Arquivados</title>
+    <title name="titulo">Projetos Arquivados</title>
 </head>
 <body>
     <h2>Projetos Arquivados</h2>
     <div>
         <table>
             <tr>
-                <td class='firstTD'>{{porcentagemArquivados}}</td>
-                <td>{{mensagemSobreArquivados}}</td>
+                <td class='firstTD' name="porc">{{porcentagemArquivados}}</td>
+                <td name="quant">{{mensagemSobreArquivados}}</td>
             </tr>
         </table>
     </div>
@@ -22,7 +22,7 @@
                 [labels]="barChartLabels"
                 [options]="barChartOptions"
                 [legend]="barChartLegend"
-                [chartType]="barChartType">
+                [chartType]="barChartType" name="grafico">
             </canvas>
         </div>
     </div>
