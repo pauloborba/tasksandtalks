@@ -4,7 +4,7 @@ Feature: Reply
         So that eu possa gerir e comunicar os afazeres com minha equipe.
 
 Scenario: Respondendo email com sucesso
-    Given Eu estou na seção "Email Thread"
+    Given Eu estou na seção "Thread de Emails"
     Given Eu posso ver um email com o assunto "Teste 1"
     When Eu respondo esse email
     Then Eu continuo na seção "Email Thread"
@@ -12,7 +12,7 @@ Scenario: Respondendo email com sucesso
     Then eu vejo um alerta "Email enviado com sucesso."
 
 Scenario: Respondendo email sem sucesso
-    Given Eu estou na seção "Email Thread"
+    Given Eu estou na seção "Thread de Emails"
     Given Eu posso ver um email com o assunto "Teste 1"
     When Eu respondo esse email
     Then Eu continuo na seção "Email Thread"
