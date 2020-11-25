@@ -101,7 +101,7 @@ export class RepositorioDeProjetos {
             if(proj.arquivado){
                 concluidos++;
                 //duracao de um projeto concluido em milisegundos dividido pela quantidade de milisegundos de um dia
-                var duracaoEmDias = (proj.conclusao.getTime() - proj.criacao.getTime())/1000*60*60*24;
+                var duracaoEmDias = (proj.conclusao.getTime() - proj.criacao.getTime())/(1000*60*60*24);
                 somaDias += duracaoEmDias;
             }
         }
