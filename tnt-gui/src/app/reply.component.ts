@@ -48,6 +48,7 @@ export class ReplyComponent implements OnInit {
       alert('Email enviado com sucesso.')
     }).catch(error => {
       console.log(error)
+      alert('Falha no envio de Email.')
     });
 
   }
