@@ -6,14 +6,13 @@
 .chat_container {
   border: 2px solid #dedede;
   background-color: #c1c1c1;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 40%;
 }
 
 .scroll_area {
-  overflow-y: scroll; 
+  overflow-y: auto; 
   height:500px;
-  border-radius: 15px;
   margin-left: 2%;
   margin-right: 2%;
   background-color: #f1f1f1;
@@ -22,7 +21,7 @@
 .dark_cell {
   border: 2px solid #ccc;
   background-color: rgb(126, 199, 142);
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
   margin: 2% 2%;
   width: 90%;
@@ -31,7 +30,7 @@
 .light_cell {
   border: 2px solid #ccc;
   background-color: #ddd;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
   margin: 2% 2%;
   width: 90%;
@@ -61,9 +60,11 @@
 
 textarea {
   margin-top: 2%;
-  width: 100%;
+  width: 110%;
 }
 
 button{
+  padding: 10px;
+  border-radius: 5px;
   margin-top: 2%;
 }
