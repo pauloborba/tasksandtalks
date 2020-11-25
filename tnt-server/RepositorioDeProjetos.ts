@@ -6,7 +6,29 @@ export class RepositorioDeProjetos {
     projetosCriadosPorMes : Map<string, number>;
     projetosArquivadosPorMes : Map<string, number>;
     listaDeProjetos : Projeto[];
-    adicionarProjeto(projeto : Projeto){};
+    adicionarProjeto(projeto : Projeto, dataHoje:string){
+        var data = new Date();
+        data.setFullYear(parseInt(dataHoje.substr(4,4)));
+        data.setMonth(parseInt(dataHoje.substr(2,2))-1);
+        data.setUTCDate(parseInt(dataHoje.substr(0,2)));
+        projeto.criacao = data;
+        this.listaDeProjetos.push(projeto);
+        this.atualizarAtributos(false, false, data);
+    }
+    arquivarProjeto(nomeProjeto:string, dataHoje:string){
+        var data = new Date();
+        data.setFullYear(parseInt(dataHoje.substr(4,4)));
+        data.setMonth(parseInt(dataHoje.substr(2,2))-1);
+        data.setUTCDate(parseInt(dataHoje.substr(0,2)));
+        
+        for(let i=0; i<this.listaDeProjetos.length; i++){
+            if(this.listaDeProjetos[i].nome == nomeProjeto){
+                this.listaDeProjetos[i].arquivado = true;
+                this.listaDeProjetos[i].conclusao = data;
+            }
+        }
+        this.atualizarAtributos(true, false, data);
+    }
     removerProjeto(nomeProjeto : string){};
 
     constructor(){
@@ -25,8 +47,8 @@ export class RepositorioDeProjetos {
         }
         var porcAtivos = null, porcArquivados = null;
         if(this.listaDeProjetos.length > 0){
-            porcAtivos = ativos*100/this.listaDeProjetos.length;
-            porcArquivados = arquivados*100/this.listaDeProjetos.length;
+            porcAtivos = parseFloat((ativos*100/this.listaDeProjetos.length).toFixed(2));
+            porcArquivados = parseFloat((arquivados*100/this.listaDeProjetos.length).toFixed(2));
         }
         if(returnAtivos) return [porcAtivos, ativos];
         else return [porcArquivados, arquivados];
@@ -105,7 +127,7 @@ export class RepositorioDeProjetos {
                 somaDias += duracaoEmDias;
             }
         }
-        if(concluidos > 0) retorno = (somaDias/concluidos);
+        if(concluidos > 0) retorno = Math.floor(somaDias/concluidos);
         return retorno;
     }
 
@@ -119,35 +141,36 @@ export class RepositorioDeProjetos {
             somaProjsPorMes += this.projetosCriadosPorMes.get(chave);
         }
         if(this.projetosCriadosPorMes.size > 0){
-            retorno = somaProjsPorMes/this.projetosCriadosPorMes.size;
+            retorno = parseFloat((somaProjsPorMes/this.projetosCriadosPorMes.size).toFixed(2));
         }
         return retorno;
     }
 
-    atualizarAtributos(arquivou:boolean, deletou:boolean) : void{
+    atualizarAtributos(arquivou:boolean, deletou:boolean, dataHoje:Date) : void{
         //confere se a atualizacao se refere a um projeto arquivado
         if(arquivou){
             if(deletou){
-                this.atualizaMes(this.arquivadosDeletadosPorMes);
+                this.atualizaMes(this.arquivadosDeletadosPorMes, dataHoje);
             }else{
-                this.atualizaMes(this.projetosArquivadosPorMes);
+                this.atualizaMes(this.projetosArquivadosPorMes, dataHoje);
                 this.preencherMesesZerados(this.projetosArquivadosPorMes);
             }
         }
         //confere se a atualizacao se refere a um projeto criado
         else{
             if(deletou){
-                this.atualizaMes(this.ativosDeletadosPorMes);
+                this.atualizaMes(this.ativosDeletadosPorMes, dataHoje);
             }else{
-                this.atualizaMes(this.projetosCriadosPorMes);
+                this.atualizaMes(this.projetosCriadosPorMes, dataHoje);
                 this.preencherMesesZerados(this.projetosCriadosPorMes);
             }
         }
     }
 
-    atualizaMes(mapProjetos:Map<string, number>) : void{
+    atualizaMes(mapProjetos:Map<string, number>, dataHoje:Date) : void{
         //encontra a chave para o objeto map (mes + ano)
-        var date = new Date();
+        //var date = new Date();
+        var date = dataHoje;
         //chave dos maps => "ano(number)mes(number)"
         var mes = date.getMonth()+1;
         var ano = date.getFullYear();
