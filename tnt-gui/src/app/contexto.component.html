@@ -9,7 +9,12 @@
         </div>
       </div>
       <div class = send_area>
-        <input placeholder="Seu nome..." [(ngModel)]="chat.sender" required>
+        <div *ngIf = "!logedIn">
+          <input placeholder="Seu nome..." [(ngModel)]="chat.sender" required>
+        </div>
+        <div *ngIf = "logedIn">
+          <p>Logado como: {{chat.sender}}</p>
+        </div>
         <textarea placeholder="Sua mensagem..." [(ngModel)]="chat.messageContent" required></textarea>
         <button (click)="sendMessage(chat)">Enviar</button>
       </div>
