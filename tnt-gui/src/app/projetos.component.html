@@ -1,3 +1,26 @@
-<html>
-
+<html (mousemove)="onMove()">
+    <table style="margin: 10px 0px 30px 0px">
+        <tr>
+           <td style="padding: 0px 10px 0px 0px"><label>Nome do projeto:</label></td>
+           <td><input [(ngModel)]="projeto.nome" name="namebox"></td>
+           <td><button class="add" name="adicionar">Adicionar</button></td>
+           <td name="msgnomeexistente" *ngIf="nomeDuplicado">
+                Já existe um projeto com esse nome
+            </td>
+        </tr>
+    </table>
+    <table class="projetos-tabela">
+        <tr *ngIf="projetos.length > 0">
+            <th>Nome</th>
+            <th>Arquivado</th>
+            <th>Criação</th>
+            <th>Conclusão</th>
+        </tr>
+        <tr *ngFor="let p of projetos" name="projetolista" class="projeto">
+            <td name="nomelista">{{p.nome}}</td>
+            <td name="arquivadolista">{{p.arquivado? 'Sim' : 'Não'}}</td>
+            <td name="criacaolista">{{p.criacao.toLocaleDateString('pt-BR')}} {{p.criacao.toLocaleTimeString('pt-BR')}}</td>
+            <td name="conclusaolista">{{p.conclusao? p.conclusao.toLocaleDateString('pt-BR') + ' ' + p.conclusao.toLocaleTimeString('pt-BR'): '-'}}</td>
+         </tr>
+    </table>
 </html>
