@@ -5,23 +5,45 @@
 
 .chat_container {
   border: 2px solid #dedede;
-  background-color: #f1f1f1;
+  background-color: #c1c1c1;
   border-radius: 5px;
   width: 40%;
 }
 
 .scroll_area {
-  overflow-y: auto; 
-  height:300px;
+  overflow-y: scroll; 
+  height:500px;
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: #f1f1f1;
 }
 
-.chat_message {
+.dark_cell {
+  border: 2px solid #ccc;
+  background-color: rgb(126, 199, 142);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 2% 2%;
+  width: 90%;
+}
+
+.light_cell {
   border: 2px solid #ccc;
   background-color: #ddd;
   border-radius: 5px;
   padding: 10px;
   margin: 2% 2%;
   width: 90%;
+}
+
+.sender{
+  font-weight: bold;
+  line-height: 0%;
+}
+
+.content{
+  font-size: large;
 }
 
 .send_area {

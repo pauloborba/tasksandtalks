@@ -2,10 +2,18 @@
 <div class="chatThread" id="myForm">
     <div class="chat_container">
       <h1 class="chat_title">Chat</h1>
-      <div class = scroll_area>
-        <div class="chat_message" *ngFor= "let c of chats">
-          <p>{{c.sender}}: {{c.messageContent}}</p>
-          <span class="time-right">{{c.sendDate}}</span>
+      <div class = scroll_area #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngFor= "let c of chats">
+          <div class=dark_cell *ngIf = "c.sender==chat.sender">
+            <p class="sender">{{c.sender}}: </p>
+            <p class="content">{{c.messageContent}}</p>
+            <span class="time-right">{{c.sendDate}}</span>
+          </div>
+          <div class=light_cell *ngIf = "c.sender!=chat.sender">
+            <p class="sender">{{c.sender}}: </p>
+            <p class="content">{{c.messageContent}}</p>
+            <span class="time-right">{{c.sendDate}}</span>
+          </div>
         </div>
       </div>
       <div class = send_area>

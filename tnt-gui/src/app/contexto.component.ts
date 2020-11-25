@@ -39,7 +39,7 @@ export class ContextoComponent implements OnInit {
    } 
 
     ngOnInit(): void {
-      this.updateSubscription = interval(10).subscribe(
+      this.updateSubscription = interval(1000).subscribe(
         (val) => { this.contextoService.getChat()
                       .subscribe(
                         as => { this.chats = as; },
