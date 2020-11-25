@@ -6,3 +6,30 @@
     margin: 10px 0;
     width: 40%;
   }
+
+p {
+  font-size: 20px;
+}
+
+.firstParag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.time-right {
+  display: flex;
+  justify-content: center;
+  font-size: smaller;
+}
+
+#lembreteButton {
+  align-items: center;
+}
+
+.form-popup {
+  background-color: #4dc0d4;
+
+}
+
+

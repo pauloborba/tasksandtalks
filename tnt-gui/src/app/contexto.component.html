@@ -3,8 +3,27 @@
     <form class="form-container">
       <h1>Chat</h1>
       <div class="chat_message" *ngFor= "let c of chats">
-        <p>{{c.sender}}: {{c.messageContent}}</p>
+        <div class="firstParag">
+          <p>{{c.sender}}: {{c.messageContent}}</p>
+          <button id="lembreteButton" (click)="setPopup(c)">Lembrete</button>
+        </div>
+
         <span class="time-right">{{c.sendDate}}</span>
+        
+        <div class="form-popup" id="myForm" *ngIf="c.sender == popup.sender && c.sendDate == popup.date && flag == true">
+          <form  class="form-container">
+            <h1>Lembrete</h1>
+        
+            <label for="email"><b>Data: </b></label>
+            <input type="date" name="data" required>
+        
+            <label for="psw"><b>Hora: </b></label>
+            <input type="time" name="hora" required>
+        
+            <button type="submit" class="btn">Adicionar lembrete</button>
+          </form>
+        </div>
+
       </div>
     </form>
   </div> 

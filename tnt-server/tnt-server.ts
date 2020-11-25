@@ -33,6 +33,21 @@ tntserver.post('/chat', function (req, res) {
       }
 })
 
+tntserver.get('/lembrete', function (req, res) {
+    res.send(JSON.stringify(chatThread.getReminders()))
+})
+
+tntserver.post('/lembrete', function (req, res) {
+    var chat: Chat = req.body
+    res.send(chat)
+    chatThread.addReminder(chat);
+    if (chat) {
+        res.send({"success": "O chat foi enviado com sucesso"});
+      } else {
+        res.send({"failure": "O chat não foi enviado"});
+      }
+})
+
 tntserver.listen(3000, function () {
     console.log('Example app listening on port 3000!')
   })
