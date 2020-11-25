@@ -23,9 +23,9 @@ tntserver.get('/chat', function (req, res){ //req.params.id para acessar id do c
     res.send(JSON.stringify(chatThread.getThreadChats()));
 })
 
-tntserver.post('/chat', function (req, res) {
-    var chat: Chat = req.body;
-    chatThread.addChat(chat);
+tntserver.post('/chat', function (req: express.Request, res: express.Response) {
+    var chat: Chat = <Chat> req.body;
+    chat = chatThread.addChat(chat);
     if (chat) {
         res.send({"success": "O chat foi enviado com sucesso"});
       } else {
