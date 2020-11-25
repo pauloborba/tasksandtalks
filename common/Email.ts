@@ -11,11 +11,11 @@ export class Email{
         this.content = content;
     }
 
-    setSender(sender){
+    setSender(sender: string){
         this.sender = sender;
     }
 
-    setRecipient(recipient){
+    setRecipient(recipient: string){
         this.recipient = recipient;
     }
 
