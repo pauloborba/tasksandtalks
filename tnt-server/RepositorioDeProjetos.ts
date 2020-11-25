@@ -31,26 +31,28 @@ export class RepositorioDeProjetos {
     }
     removerProjeto(nomeProjeto : string){};
 
-    constructor(){
+    constructor(inicializarProjetos:boolean){
         this.projetosArquivadosPorMes = new Map();
         this.projetosCriadosPorMes = new Map();
         this.ativosDeletadosPorMes = new Map();
         this.arquivadosDeletadosPorMes = new Map();
         this.listaDeProjetos = [];
-        this.adicionarProjeto(new Projeto(false, "listaJava"), "01012020");
-        this.adicionarProjeto(new Projeto(false, "listaHaskell"), "01012020");
-        this.adicionarProjeto(new Projeto(false, "listaJavaScript"), "01022020");
-        this.adicionarProjeto(new Projeto(false, "listaC"), "01022020");
-        this.adicionarProjeto(new Projeto(false, "listaCSS"), "01052020");
-        this.adicionarProjeto(new Projeto(false, "listaGo"), "01062020");
-        this.adicionarProjeto(new Projeto(false, "listaRuby"), "01072020");
-        this.adicionarProjeto(new Projeto(false, "listaHtml"), "01082020");
-        this.adicionarProjeto(new Projeto(false, "listaPLC"), "01092020");
-        this.adicionarProjeto(new Projeto(false, "listaESS"), "01102020");
-        this.arquivarProjeto("listaJava", "16012020");
-        this.arquivarProjeto("listaHaskell", "16012020");
-        this.arquivarProjeto("listaJavaScript", "06022020");
-        this.arquivarProjeto("listaC", "06022020");
+        if(inicializarProjetos){
+            this.adicionarProjeto(new Projeto(false, "listaJava"), "01012020");
+            this.adicionarProjeto(new Projeto(false, "listaHaskell"), "01012020");
+            this.adicionarProjeto(new Projeto(false, "listaJavaScript"), "01022020");
+            this.adicionarProjeto(new Projeto(false, "listaC"), "01022020");
+            this.adicionarProjeto(new Projeto(false, "listaCSS"), "01052020");
+            this.adicionarProjeto(new Projeto(false, "listaGo"), "01062020");
+            this.adicionarProjeto(new Projeto(false, "listaRuby"), "01072020");
+            this.adicionarProjeto(new Projeto(false, "listaHtml"), "01082020");
+            this.adicionarProjeto(new Projeto(false, "listaPLC"), "01092020");
+            this.adicionarProjeto(new Projeto(false, "listaESS"), "01102020");
+            this.arquivarProjeto("listaJava", "16012020");
+            this.arquivarProjeto("listaHaskell", "16012020");
+            this.arquivarProjeto("listaJavaScript", "06022020");
+            this.arquivarProjeto("listaC", "06022020");
+        }
     }
 
     getPorcentagem(returnAtivos:boolean) : number[]{

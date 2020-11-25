@@ -4,7 +4,7 @@ import bodyParser = require("body-parser");
 import {RepositorioDeProjetos} from './RepositorioDeProjetos';
 
 var tntserver = express();
-var repositorioDeProjetos = new RepositorioDeProjetos();
+var repositorioDeProjetos = new RepositorioDeProjetos(true);
 
 var allowCrossDomain = function(req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Origin', "*");
