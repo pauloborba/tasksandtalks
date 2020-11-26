@@ -33,6 +33,20 @@ tntserver.post('/chat', function (req, res) {
       }
 })
 
+tntserver.get('/snoozing', function (req, res) {
+    res.send(JSON.stringify(chatThread.applySnoozing()));
+})
+
+tntserver.post('/snoozing', function (req: express.Request, res: express.Response) {
+  var snoozing: Chat = <Chat> req.body;
+  chatThread.addSnoozing(snoozing);
+  if (snoozing) {
+      res.send({"success": "O snoozing foi alterado com sucesso"});
+    } else {
+      res.send({"failure": "O snoozing não foi alterado"});
+    }
+})
+
 tntserver.listen(3000, function () {
     console.log('Example app listening on port 3000!')
   })
