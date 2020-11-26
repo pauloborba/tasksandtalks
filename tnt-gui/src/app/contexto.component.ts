@@ -12,7 +12,7 @@ import { Observable, interval, Subscription } from 'rxjs';
 export class ContextoComponent implements OnInit {
     chat: Chat = new Chat();
     chats: Chat[] = [];
-    logedIn: boolean = false;
+    loggedIn: boolean = false;
 
     private updateSubscription: Subscription;
 
@@ -22,7 +22,7 @@ export class ContextoComponent implements OnInit {
     
     sendMessage(c: Chat): void {
       if(c.sender!="" && c.messageContent!=""){
-        this.logedIn = true;
+        this.loggedIn = true;
         c.sendDate = new Date();
         this.contextoService.newMsg(c)
               .subscribe(
