@@ -6,7 +6,7 @@ h1 {
   width: 600px;
 }
 
-.email-container h5 {
+#email-container h5 {
   font: 600 13px Verdana;
   color: rgb(22, 22, 22);
   margin: 0px;

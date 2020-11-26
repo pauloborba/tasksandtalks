@@ -24,6 +24,7 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     When(/^Eu respondo o email com o assunto "([^\"]*)"$/, async (emailSubject) => {
         const emails: ElementArrayFinder = element.all(by.id('email-container'));
+        await emails;
 
         await emails.map(async (emailElements) => {
             const subject: ElementFinder = emailElements.element(by.id('email-subject'));
