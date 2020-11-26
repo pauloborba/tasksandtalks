@@ -12,12 +12,17 @@ import { TarefaService } from './tarefa.service';
 export class TarefaComponent implements OnInit {
   tarefa: Tarefa = new Tarefa;
   tarefas: Tarefa[] = [];
+  mostrarEvento1: boolean = false;
+  mostrarEvento0: boolean = false;
 
 
-  constructor(private tarefaService: TarefaService) { }
+  constructor(private tarefaService: TarefaService) { 
+    
+  }
 
   ngOnInit(): void {
     this.tarefaService.getTarefas()
+    
     .subscribe(
       as => { this.tarefas = as; },
       msg => { alert(msg.message); }

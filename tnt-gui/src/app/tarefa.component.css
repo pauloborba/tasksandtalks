@@ -36,6 +36,13 @@
 
 }
 
+.evento0{
+    position: absolute;
+    left: 34%;
+    top: 42%;
+    background-color: red;
+}
+
 .titulo2{
     position: absolute;
     left: 50%;
@@ -72,6 +79,12 @@
     left: 50%;
     top: 42%;
 
+}
+.evento1{
+    position: absolute;
+    left: 54%;
+    top: 42%;
+    background-color: red;
 }
 
 h1{
