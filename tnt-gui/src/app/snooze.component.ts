@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-@AppComponent({
+@Component({
     selector: 'snooze',
     templateUrl: './snooze.component.html',
     styleUrls: ['./snooze.component.css']

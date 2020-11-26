@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html>
+<div class="chatThread" id="myForm">
+    <form class="form-container">
+      <h1>Chat</h1>
+      <div class="chat_message" *ngFor= "let c of chats">
+        <div class="firstParag">
+          <p>{{c.sender}}: {{c.messageContent}}</p>
+          <button id="lembreteButton" (click)="setPopup(c)">Lembrete</button>
+        </div>
+
+        <span class="time-right">{{c.sendDate}}</span>
+        
+        <div class="form-popup" id="myForm" *ngIf="c.sender == popup.sender && c.sendDate == popup.sendDate && flag == true">
+          <!-- <form  class="form-container"> -->
+            <h1>Lembrete</h1>
+        
+            <label for="email"><b>Data: </b></label>
+            <input [(ngModel)]="dateReminder" type="date" name="data" min="" required>
+        
+            <label for="psw"><b>Hora: </b></label>
+            <input [(ngModel)]="timeReminder" type="time" step="1" name="hora" required>
+        
+            <button type="submit" class="btn" (click)="setDataReminder()">Adicionar lembrete</button>
+          <!-- </form> -->
+        </div>
+
+      </div>
+    </form>
+  </div> 
 </html>

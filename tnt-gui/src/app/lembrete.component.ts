@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   })
 
   export class LembreteComponent implements OnInit {
-      constructor() {
-
-      }
+      constructor() {}
 
       ngOnInit() {
           
+      }
+      openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+      
+      closeForm() {
+        document.getElementById("myForm").style.display = "none";
       }
   }
