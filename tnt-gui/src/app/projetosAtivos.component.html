@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title name="titulo">Projetos Ativos</title>
+</head>
+<body>
+    <h2>Projetos Ativos</h2>
+    <div>
+        <table>
+            <tr>
+            <td class='firstTD' name="porc">{{porcentagemAtivos}}</td>
+            <td name="quant">{{mensagemSobreAtivos}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <div style="display: block;">
+            <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType" name="grafico">
+            </canvas>
+        </div>
+    </div>
+
+</body>
+</html>

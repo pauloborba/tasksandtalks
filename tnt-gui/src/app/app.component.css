@@ -1,0 +1,22 @@
+h1 {
+    font-family: opensans-regular-webfont, Arial, sans-serif;
+    font-weight: bold;
+}
+nav a {
+    font-family: opensans-regular-webfont, Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding: 3px 6px;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #ff7faa;
+    color: #ffffff;
+    border-radius: 4px;
+    margin: 4px;
+}
+nav a:hover {
+    font-family: opensans-regular-webfont, Arial, sans-serif;
+    font-weight: bold;
+    color: #e6e6e6;
+    background-color: #eb799f;
+}
