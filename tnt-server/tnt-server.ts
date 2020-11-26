@@ -25,8 +25,12 @@ tntserver.get('/projetosEstat/ativos', function (req:express.Request, res:expres
 })
 
 tntserver.get('/projetosEstat/porcentagem:returnAtivos', function (req:express.Request, res:express.Response) {
-    var returnAtivos = (req.params.returnAtivos.search('true') > 0);
-    res.send(JSON.stringify(repositorioDeProjetos.getPorcentagem(returnAtivos)));
+    var returnAtivos;
+    if(req.params.returnAtivos.search('true') > 0) returnAtivos = true;
+    else if(req.params.returnAtivos.search('false') > 0) returnAtivos = false;
+    else returnAtivos = null;
+    if(returnAtivos != null) res.send(JSON.stringify(repositorioDeProjetos.getPorcentagem(returnAtivos)));
+    else res.send({failure: 'parametro invalido (nao eh booleano)'});
 })
 
 tntserver.get('/dadosGerais/duracaoMedia', function (req:express.Request, res:express.Response) {
