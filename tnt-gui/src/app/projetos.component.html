@@ -3,7 +3,7 @@
         <tr>
            <td style="padding: 0px 10px 0px 0px"><label>Nome do projeto:</label></td>
            <td><input [(ngModel)]="projeto.nome" name="namebox"></td>
-           <td><button class="add" name="adicionar">Adicionar</button></td>
+           <td><button (click)="criarProjeto(projeto)" class="add" name="adicionar">Adicionar</button></td>
            <td name="msgnomeexistente" *ngIf="nomeDuplicado">
                 Já existe um projeto com esse nome
             </td>

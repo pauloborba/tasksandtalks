@@ -15,6 +15,23 @@ import { ProjetoService } from './projeto.service';
 
     constructor(private projetoService: ProjetoService) {}
 
+    criarProjeto(p: Projeto): void {
+      if (p.nome != '') {
+        this.projetoService.criar(p)
+               .subscribe(
+                 ar => {
+                   if (ar) {
+                     this.projetos.push(ar);
+                     this.projeto = new Projeto();
+                   } else {
+                     this.nomeDuplicado = true;
+                   } 
+                 },
+                 msg => { alert(msg.message); }
+               );
+      }
+    };
+
     onMove(): void {
       this.nomeDuplicado = false;
     };
