@@ -9,8 +9,12 @@ export class ChatThread extends Contexto{
        super();
    }
 
-   addChat(newChat: Chat): void{
-
+   addChat(newChat: Chat): Chat{
+    var result: Chat = null;
+    result = new Chat();
+    result.copyFrom(newChat);
+    this.threadChats.push(result);
+    return result;
    }
 
    read(): void{
@@ -18,6 +22,6 @@ export class ChatThread extends Contexto{
    }
 
    getThreadChats(): Chat[]{
-       return null;
+    return this.threadChats;
    }
 }

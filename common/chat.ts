@@ -3,7 +3,19 @@ export class Chat{
     messageContent: string;
     sendDate: Date;
 
-    constructor(sender: string, content: string, date: Date) {
+    constructor() {
+        this.clean();
+    }
 
+    clean(): void {
+        this.sender = "";
+        this.messageContent = "";
+        this.sendDate = new Date();
+      }
+
+    copyFrom(from: Chat): void {
+        this.sender = from.sender;
+        this.messageContent = from.messageContent;
+        this.sendDate = from.sendDate;
     }
 }
