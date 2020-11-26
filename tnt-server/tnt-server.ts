@@ -29,11 +29,11 @@ tntserver.post('/email/send', async (request, response) => {
             response.sendStatus(200);
         }
         catch (error) {
-            response.send({ message: `unexpected error occured: ${error}` }).sendStatus(500);
+            response.send({ message: `unexpected error occured: ${error}` });
         }
     }
     else {
-        response.send({ message: 'missing information in body' }).sendStatus(400);
+        response.send({ message: 'missing information in body' })
     }
 
 });
