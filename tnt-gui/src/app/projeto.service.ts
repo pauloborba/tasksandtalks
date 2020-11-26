@@ -21,6 +21,14 @@ export class ProjetoService {
               ); 
   }
 
+  atualizar(projeto: Projeto): Observable<Projeto> {
+    return this.http.put<any>(this.tntURL + "/projeto",JSON.stringify(projeto), {headers: this.headers})
+            .pipe( 
+                retry(2),
+                map( res => {if (res.success) {return projeto;} else {return null;}} )
+              ); 
+  }
+
   getProjetos(): Observable<Projeto[]> {
     return this.http.get<Projeto[]>(this.tntURL + "/projetos")
               .pipe(

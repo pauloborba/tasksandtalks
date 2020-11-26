@@ -27,5 +27,18 @@ export class RepositorioDeProjetos {
         return projeto
     };
 
+    arquivarProjeto(projeto: Projeto): Projeto{
+        var result = null
+        this.listaDeProjetos.forEach(p => {
+            if (p.nome === projeto.nome) {
+                p.conclusao = projeto.conclusao
+                p.arquivado = true
+                result = p
+            }
+        })
+
+        return result
+    };
+
     atualizarAtributos(){};
 } 

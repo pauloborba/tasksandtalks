@@ -32,6 +32,25 @@ import { ProjetoService } from './projeto.service';
       }
     };
 
+    arquivarProjeto(projeto: Projeto): void {
+      projeto.conclusao = new Date ()
+      this.projetoService.atualizar(projeto)
+          .subscribe(
+              as => {
+                  if (as) {
+                      var p = this.projetos.forEach(p => {
+                          if (p.nome == as.nome) {
+                             p.arquivado = true
+                          }
+                      })
+                  } else {
+                      alert('Aluno não arquivado.');
+                  } 
+              },
+              msg => { alert(msg.message); }
+          );
+    };
+
     deletarProjeto(p: Projeto): void {
       this.projetoService.deletar(p)
              .subscribe(

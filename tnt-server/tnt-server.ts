@@ -32,6 +32,17 @@ tntserver.post('/projeto', function (req: express.Request, res: express.Response
     }
 })
 
+
+tntserver.put('/projeto', function (req: express.Request, res: express.Response) {
+    var projeto: Projeto = <Projeto> req.body;
+    projeto = repositorioDeProjetos.arquivarProjeto(projeto);
+    if (projeto) {
+      res.send({"success": "O projeto foi atualizado com sucesso"});
+    } else {
+      res.send({"failure": "O projeto não pode ser atualizado"});
+    }
+})
+
 tntserver.delete('/projetos/:nome', function (req: express.Request, res: express.Response) {
     var nome: string = req.params.nome;
     var projeto: Projeto = repositorioDeProjetos.removerProjeto(nome);
