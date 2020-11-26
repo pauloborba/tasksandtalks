@@ -10,7 +10,7 @@ export class RepositorioDeProjetos {
         var data = new Date();
         data.setFullYear(parseInt(dataHoje.substr(4,4)));
         data.setMonth(parseInt(dataHoje.substr(2,2))-1);
-        data.setUTCDate(parseInt(dataHoje.substr(0,2)));
+        data.setDate(parseInt(dataHoje.substr(0,2)));
         projeto.criacao = data;
         this.listaDeProjetos.push(projeto);
         this.atualizarAtributos(false, false, data);
@@ -19,7 +19,7 @@ export class RepositorioDeProjetos {
         var data = new Date();
         data.setFullYear(parseInt(dataHoje.substr(4,4)));
         data.setMonth(parseInt(dataHoje.substr(2,2))-1);
-        data.setUTCDate(parseInt(dataHoje.substr(0,2)));
+        data.setDate(parseInt(dataHoje.substr(0,2)));
         
         for(let i=0; i<this.listaDeProjetos.length; i++){
             if(this.listaDeProjetos[i].nome == nomeProjeto){

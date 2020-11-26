@@ -15,7 +15,7 @@ describe("O repositorio de projetos ", () => {
         var date:Date = new Date();
 
         //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getUTCDate().toString();
+        var dia = date.getDate().toString();
         if(parseInt(dia) < 10) dia = '0' + dia;
         var mes = (date.getMonth()+1).toString();
         if(parseInt(mes) < 10) mes = '0' + mes;
@@ -39,7 +39,7 @@ describe("O repositorio de projetos ", () => {
         var date:Date = new Date();
 
         //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getUTCDate().toString();
+        var dia = date.getDate().toString();
         if(parseInt(dia) < 10) dia = '0' + dia;
         var mes = (date.getMonth()+1).toString();
         if(parseInt(mes) < 10) mes = '0' + mes;
@@ -63,7 +63,7 @@ describe("O repositorio de projetos ", () => {
         var date:Date = new Date();
 
         //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getUTCDate().toString();
+        var dia = date.getDate().toString();
         if(parseInt(dia) < 10) dia = '0' + dia;
         var mes = (date.getMonth()+1).toString();
         if(parseInt(mes) < 10) mes = '0' + mes;
@@ -80,7 +80,7 @@ describe("O repositorio de projetos ", () => {
         //data de hoje (para representar a data de criacao e de arquivamento do projeto)
         var date:Date = new Date();
         //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getUTCDate().toString();
+        var dia = date.getDate().toString();
         if(parseInt(dia) < 10) dia = '0' + dia;
         var mes = (date.getMonth()+1).toString();
         if(parseInt(mes) < 10) mes = '0' + mes;
