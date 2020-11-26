@@ -47,6 +47,13 @@ tntserver.post('/snoozing', function (req: express.Request, res: express.Respons
     }
 })
 
-tntserver.listen(3000, function () {
+var server = tntserver.listen(3000, function () {
     console.log('Example app listening on port 3000!')
   })
+
+function closeServer(): void {
+  server.close();
+}
+
+export { server, closeServer }
+
