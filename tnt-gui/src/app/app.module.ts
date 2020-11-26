@@ -10,6 +10,7 @@ import { EventosComponent } from './eventos.component';
 import { EventService } from './event.service';
 import { ProjetosComponent } from './projetos.component';
 import { TarefaComponent } from './tarefa.component';
+import { TarefaService } from './tarefa.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { TarefaComponent } from './tarefa.component';
       }
     ])
   ],
-  providers: [EventService],
+  providers: [TarefaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,92 @@
+.titulo1{
+    position: absolute;
+    left: 30%;
+    top: 25%;
+
+}
+
+.subtitulo1{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+}
+
+.subtitulo2{
+    position: absolute;
+    left: 30%;
+    top: 33%;
+}
+
+.subtitulo3{
+    position: absolute;
+    left: 30%;
+    top: 36%;
+}
+
+.subtitulo4{
+    position: absolute;
+    left: 30%;
+    top: 39%;
+}
+
+.subtitulo5{
+    position: absolute;
+    left: 30%;
+    top: 42%;
+
+}
+
+.titulo2{
+    position: absolute;
+    left: 50%;
+    top: 25%;
+
+}
+
+.subtitulo6{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+}
+
+.subtitulo7{
+    position: absolute;
+    left: 50%;
+    top: 33%;
+}
+
+.subtitulo8{
+    position: absolute;
+    left: 50%;
+    top: 36%;
+}
+
+.subtitulo9{
+    position: absolute;
+    left: 50%;
+    top: 39%;
+}
+
+.subtitulo10{
+    position: absolute;
+    left: 50%;
+    top: 42%;
+
+}
+
+h1{
+    position: absolute;
+    left: 30%;
+}
+
+h2{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
+
+a{
+    position: absolute;
+    top: 16%;
+    left: 40%;
+}
