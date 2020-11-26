@@ -19,6 +19,7 @@ tntserver.use(allowCrossDomain);
 
 tntserver.use(bodyParser.json());
 
+
 tntserver.get('/chat', function (req, res){ //req.params.id para acessar id do chatThread
     res.send(JSON.stringify(chatThread.getThreadChats()));
 })
