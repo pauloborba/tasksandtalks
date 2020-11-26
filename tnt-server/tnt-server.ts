@@ -41,4 +41,4 @@ function closeServer(): void {
     server.close();
 }
 
-export { server, closeServer } 
+export { server, closeServer }
