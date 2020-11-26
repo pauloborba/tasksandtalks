@@ -2,7 +2,7 @@
   <div class="email-thread-container">
     <h1 id="section-title" >Thread de Emails</h1>
     <hr>
-    <div *ngFor="let threadEmail of emails" class="email-container">
+    <div *ngFor="let threadEmail of emails" id="email-container">
       <div class="sender-recipient-container">
         <h3>from: {{threadEmail.email.sender}}</h3>
         <h4>to: {{threadEmail.email.recipient}}</h4>
