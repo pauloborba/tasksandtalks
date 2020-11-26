@@ -18,4 +18,12 @@ export class ContextoService {
                  retry(2)
                );
     }
+
+    criarSnoozing(Snoozing: Chat): Observable<Chat>{
+        return this.http.post<any>(this.tntURL + "/snoozing", JSON.stringify(Snoozing), {headers: this.headers})
+            .pipe(
+                retry(2),
+                map( res => {if (res.sucess) {console.log("Post realizado com sucesso");} else {return null;}})
+            );
+    }
 }
