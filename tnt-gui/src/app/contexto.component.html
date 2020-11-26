@@ -1,10 +1,31 @@
 <html>
 <div class="chatThread" id="myForm">
     <form class="form-container">
-      <h1>Chat</h1>
+      <div *ngIf="activateSnooze == false">
+        <h1>Chat</h1>
+          <button (click)="appearPopup()">Snooze</button>
+          <div class="form-popup" id="myForm" *ngIf="flagaux == true">
+              <form  class="form-container">
+              <h1>Snooze</h1>
+          
+              <label for="data"><b>Data: </b></label>
+              <input [(ngModel)]="dateSnoozing" type="date" name="data" min="" required>
+          
+              <label for="hora"><b>Hora: </b></label>
+              <input [(ngModel)]="timeSnoozing" type="time" name="hora" required>
+
+              <button (click)="getSnoozeDate()" type="submit" class="btn">Adicionar snooze</button>
+              </form>
+          </div>
+        </div>
+
       <div class="chat_message" *ngFor= "let c of chats">
-        <p>{{c.sender}}: {{c.messageContent}}</p>
+        <div class="firstParag">
+          <p>{{c.sender}}: {{c.messageContent}}</p>
+        </div>
+
         <span class="time-right">{{c.sendDate}}</span>
+
       </div>
     </form>
   </div> 
