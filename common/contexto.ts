@@ -1,8 +1,10 @@
+import { Event } from "./event";
+
 export class Contexto {
-    lembrete: Date;
+    lembrete: boolean;
     lido: boolean;
     atenção: boolean;
-    snoozing: boolean;
+    evento: Event[];
 
     constructor() {
 

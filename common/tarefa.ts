@@ -1,14 +1,16 @@
 import { Contexto } from './contexto';
+import { Event } from './event';
 
 export class Tarefa {
   descricao: string;
-  prazo: Date;
+  prazo: string;
   concluida: boolean;
   arquivada: boolean;
   snoozing: boolean;
-  lembrete: Date;
   contextos: Contexto[];
 
   constructor() { }
+
+
 
 }
