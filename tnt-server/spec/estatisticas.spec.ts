@@ -1,6 +1,18 @@
 import { RepositorioDeProjetos } from '../RepositorioDeProjetos'
 import { Projeto } from '../../common/projeto'
 
+function getDataHoje():string{
+    var date:Date = new Date();
+    //gerar string de data no formato 'ddmmyyyy'
+    var dia = date.getDate().toString();
+    if(parseInt(dia) < 10) dia = '0' + dia;
+    var mes = (date.getMonth()+1).toString();
+    if(parseInt(mes) < 10) mes = '0' + mes;
+    var ano = date.getFullYear().toString();
+    var dataHojeString = dia+mes+ano;
+    return dataHojeString;
+}
+
 describe("O repositorio de projetos ", () => {
     var repositorio: RepositorioDeProjetos;
   
@@ -12,16 +24,7 @@ describe("O repositorio de projetos ", () => {
 
     it("armazena a quantidade de projetos criados por mes corretamente", () => {
         //data de hoje (para representar a data da criacao do projeto)
-        var date:Date = new Date();
-
-        //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getDate().toString();
-        if(parseInt(dia) < 10) dia = '0' + dia;
-        var mes = (date.getMonth()+1).toString();
-        if(parseInt(mes) < 10) mes = '0' + mes;
-        var ano = date.getFullYear().toString();
-        var dataHojeString = dia+mes+ano;
-
+        var dataHojeString = getDataHoje();
         //adicao de projeto
         repositorio.adicionarProjeto(new Projeto(false, "roteiro 1 de ESS"), dataHojeString);
         //comparacoes
@@ -36,16 +39,7 @@ describe("O repositorio de projetos ", () => {
 
     it("arquiva a quantidade de projetos criados por mes corretamente", () => {
         //data de hoje (para representar a data do arquivamento do projeto)
-        var date:Date = new Date();
-
-        //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getDate().toString();
-        if(parseInt(dia) < 10) dia = '0' + dia;
-        var mes = (date.getMonth()+1).toString();
-        if(parseInt(mes) < 10) mes = '0' + mes;
-        var ano = date.getFullYear().toString();
-        var dataHojeString = dia+mes+ano;
-
+        var dataHojeString = getDataHoje();
         //adicao de projeto em um mes passado
         repositorio.adicionarProjeto(new Projeto(false, "roteiro 1 de ESS"), "15012020");
         //tamanho da lista de projetos antes do arquivamento (nao deve ser alterada)
@@ -60,16 +54,7 @@ describe("O repositorio de projetos ", () => {
 
     it("calcula a media de projetos criados por mes corretamente", () => {
         //data de hoje (para representar a data da criacao do projeto)
-        var date:Date = new Date();
-
-        //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getDate().toString();
-        if(parseInt(dia) < 10) dia = '0' + dia;
-        var mes = (date.getMonth()+1).toString();
-        if(parseInt(mes) < 10) mes = '0' + mes;
-        var ano = date.getFullYear().toString();
-        var dataHojeString = dia+mes+ano;
-
+        var dataHojeString = getDataHoje();
         //adicao de projeto
         repositorio.adicionarProjeto(new Projeto(false, "roteiro 1 de ESS"), dataHojeString);
         //comparacoes
@@ -78,14 +63,8 @@ describe("O repositorio de projetos ", () => {
 
     it("calcula a duracao media de projetos concluidos corretamente", () => {
         //data de hoje (para representar a data de criacao e de arquivamento do projeto)
-        var date:Date = new Date();
-        //gerar string de data no formato 'ddmmyyyy'
-        var dia = date.getDate().toString();
-        if(parseInt(dia) < 10) dia = '0' + dia;
-        var mes = (date.getMonth()+1).toString();
-        if(parseInt(mes) < 10) mes = '0' + mes;
-        var ano = date.getFullYear().toString();
-        var dataHojeString = dia+mes+ano;
+        var dataHojeString = getDataHoje();
+        
         //situacao com media igual a 0
         //adicao de projetos
         repositorio.adicionarProjeto(new Projeto(false, "roteiro 1 de ESS"), dataHojeString);
@@ -110,7 +89,6 @@ describe("O repositorio de projetos ", () => {
         expect(repositorio.getPorcentagem(true)[1]).toBe(0);    //quantidade de projetos ativos
         expect(repositorio.getPorcentagem(false)[0]).toBe(null);    //porcentagem de projetos arquivados
         expect(repositorio.getPorcentagem(false)[1]).toBe(0);    //quantidade de projetos arquivados
-
         /*
         * nova instancia do repositorio (local) para testar o 
         * construtor stub (instancia 10 projetos: 6 ativos e 4 arquivados)
