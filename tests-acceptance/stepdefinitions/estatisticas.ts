@@ -20,8 +20,12 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     Given(/^Eu vejo um menu com as subsecoes: '([^\"]*)', '([^\"]*)' e '([^\"]*)'$/, async (menu1, menu2, menu3) => {
         var arr = element.all(by.name("menu"));
-        await arr.filter(elem => sameTexts(elem, menu1.toString(), menu2.toString(), menu3.toString())).then
-                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(3));
+        await arr.filter(elem => sameText(elem, menu1.toString())).then
+                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await arr.filter(elem => sameText(elem, menu2.toString())).then
+                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await arr.filter(elem => sameText(elem, menu3.toString())).then
+                   (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
 
     When(/^Eu seleciono a subseção '([^\"]*)'$/, async (menu) => {
@@ -47,7 +51,6 @@ defineSupportCode(function ({ Given, When, Then }) {
         await arr2.filter(elem => hasSomething(elem, estado.toString())).then
                    (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
-
 
     Then(/^Eu vejo que a '([^\"]*)' dos projetos em '([^\"]*)' é '([\d+(\.\d+)?]*)'$/, async (tipo, grandeza, valor) => {
         var nomeElemento;
