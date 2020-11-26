@@ -83,15 +83,13 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     Then(/^I cannot see the the chat message "([^\"]*)" in the chat thread$/, async (msg) => {
-        await request.get(base_url + "chat")
-                .then(body => 
-                   expect(body.includes(`"messageContent":"${msg}"`)).to.equal(false));
+        var allchats : ElementArrayFinder = element.all(by.name('chatList'));
+        allchats.filter(elem => pAND(sameMsg(elem,msg),sameName(elem,""))).then(elems => expect(Promise.resolve(elems.length)).to.not.equal(1));
     });
 
     Then(/^I cannot see an empty message in the chat thread$/, async () => {
-        await request.get(base_url + "chat")
-                .then(body => 
-                   expect(body.includes(`"messageContent":""`)).to.equal(false));
+        var allchats : ElementArrayFinder = element.all(by.name('chatList'));
+        allchats.filter(elem => pAND(sameMsg(elem,""),true)).then(elems => expect(Promise.resolve(elems.length)).to.not.equal(1));
     });
 
     Then(/^I cannot see an empty message that was sent by "([^\"]*)" in the chat thread$/, async (name) => {

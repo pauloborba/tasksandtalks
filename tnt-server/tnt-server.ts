@@ -23,7 +23,7 @@ tntserver.get('/chat', function (req, res){ //req.params.id para acessar id do c
     res.send(JSON.stringify(chatThread.getThreadChats()));
 })
 
-tntserver.post('/chat', function (req: express.Request, res: express.Response) {
+tntserver.post('/chat', function (req, res) {
     var chat: Chat = <Chat> req.body;
     chat = chatThread.addChat(chat);
     if (chat) {
@@ -33,6 +33,12 @@ tntserver.post('/chat', function (req: express.Request, res: express.Response) {
       }
 })
 
-tntserver.listen(3000, function () {
+var server = tntserver.listen(3000, function () {
     console.log('Example app listening on port 3000!')
-  })
+})
+
+function closeServer(): void {
+    server.close();
+}
+
+export { server, closeServer } 
