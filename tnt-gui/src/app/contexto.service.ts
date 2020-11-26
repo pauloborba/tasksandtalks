@@ -19,12 +19,11 @@ export class ContextoService {
                );
     }
 
-    criar(aluno: Aluno): Observable<Aluno> {
-        return this.http.post<any>(this.taURL + "/aluno", aluno, {headers: this.headers})
+    criarLembrete(lembrete: Chat): Observable<Chat> {
+        return this.http.post<any>(this.tntURL + "/lembrete", JSON.stringify(lembrete), {headers: this.headers})
                  .pipe( 
                     retry(2),
-                    map( res => {if (res.success) {return aluno;} else {return null;}} )
-                  ); 
+                    map( res => {if (res.success) {console.log("Post realizado com sucesso");} else {return null;}}  )   
+                  );
       }
-
 }

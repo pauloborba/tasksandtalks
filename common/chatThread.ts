@@ -18,23 +18,24 @@ export class ChatThread extends Contexto{
         let flagLembretes = []
 
         for ( let a of this.bufferLembretes ) {   
-                let aux = new Date();
-                let now = aux.getTime();
-                a.sendDate = new Date(2020, 10, 26, 0, 42, 40);
-                let reminderTime = a.sendDate.getTime();
+                let aux = new Date();     
+                let now = aux.getTime(); 
 
-                if(now >= reminderTime) {
-                    this.threadChats.push(a);
-                    flagLembretes.push(true)
+                let auxTime = new Date(a.sendDate.toString())
+                let reminderTime = auxTime.getTime(); 
+
+                if(now >= reminderTime) { 
+                    this.threadChats.push(a);  
+                    flagLembretes.push(true)    
                 } else {
                     flagLembretes.push(false)
                 }
             }
         let removed = 0;
-        for ( let i = 0; i < flagLembretes.length; i++ ) {
-                if ( flagLembretes[i] ) {
-                    this.bufferLembretes.splice(i - removed, 1);
-                    removed += 1;
+        for ( let i = 0; i < flagLembretes.length; i++ ) {  
+                if ( flagLembretes[i] ) {        
+                    this.bufferLembretes.splice(i - removed, 1);     
+                    removed += 1;    
                 }
             }
         }
@@ -44,9 +45,9 @@ export class ChatThread extends Contexto{
     this.threadChats.push(newChat)
    }
 
-   addReminder(newChat: Chat) {
+   addReminder(newReminder: Chat) {
         
-        this.bufferLembretes.push(newChat);
+        this.bufferLembretes.push(newReminder);
 
         setInterval(this.checkReminder, 1000);        
 

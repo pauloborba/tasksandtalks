@@ -38,14 +38,14 @@ tntserver.get('/lembrete', function (req, res) {
 })
 
 tntserver.post('/lembrete', function (req, res) {
-    var chat: Chat = req.body
-    res.send(chat)
+    var chat: Chat = <Chat> req.body
     chatThread.addReminder(chat);
     if (chat) {
-        res.send({"success": "O chat foi enviado com sucesso"});
-      } else {
-        res.send({"failure": "O chat não foi enviado"});
-      }
+      res.send({"success": "O chat foi enviado com sucesso"});
+    } else {
+      res.send({"failure": "O chat não foi enviado"});
+    }
+    res.send(chat)
 })
 
 tntserver.listen(3000, function () {

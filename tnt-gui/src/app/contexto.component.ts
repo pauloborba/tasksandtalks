@@ -41,8 +41,6 @@ export class ContextoComponent implements OnInit {
     }
     
     setDataReminder() {
-      console.log(this.dateReminder)
-      console.log(this.timeReminder)
 
       let aux: string = this.dateReminder.toString()
       let data: Array<string> = aux.split('-')
@@ -51,17 +49,32 @@ export class ContextoComponent implements OnInit {
       let hora: Array<string> = aux.split(':')
 
       const example: Date = new Date(parseInt(data[0]), parseInt(data[1])-1, parseInt(data[2]), parseInt(hora[0]), parseInt(hora[1]), parseInt(hora[2]))
-      console.log(example)
+      
+      let nextReminder: Chat = {
+        sender: this.popup.sender,
+        messageContent: this.popup.messageContent,
+        sendDate: example
+      }
+
+      let aux3 = JSON.stringify(nextReminder)
+      console.log(aux3)
+
+      this.contextoService.criarLembrete(nextReminder).subscribe();
+
+      this.flag = false;
       
     }
 
     ngOnInit(): void {
       this.updateSubscription = interval(1000).subscribe(
-        (val) => { this.contextoService.getChat()
+        (val) => { 
+                  if(!this.flag) { 
+                    this.contextoService.getChat()
                       .subscribe(
                         as => { this.chats = as; },
                         msg => { alert(msg.message); }
-           );
+                      );
+                    }
       });
     }
   }
