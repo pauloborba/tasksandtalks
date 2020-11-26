@@ -1,6 +1,11 @@
 import express = require('express');
 import bodyParser = require("body-parser");
+import { Projeto } from '../common/projeto';
+import { RepositorioDeProjetos } from './RepositorioDeProjetos';
 
+var repositorioDeProjetos: RepositorioDeProjetos = new RepositorioDeProjetos();
+
+const LISTEN_PORT = 3000;
 var tntserver = express();
 
 var allowCrossDomain = function(req: any, res: any, next: any) {
@@ -12,3 +17,21 @@ var allowCrossDomain = function(req: any, res: any, next: any) {
 tntserver.use(allowCrossDomain);
 
 tntserver.use(bodyParser.json());
+
+tntserver.get('/projetos', function (req: express.Request, res: express.Response) {
+    res.send(JSON.stringify(repositorioDeProjetos.getProjetos()));
+})
+
+tntserver.post('/projeto', function (req: express.Request, res: express.Response) {
+    var projeto: Projeto = <Projeto> req.body; //verificar se é mesmo projeto!
+    projeto = repositorioDeProjetos.adicionarProjeto(projeto);
+    if (projeto) {
+      res.send({"success": "O projeto foi cadastrado com sucesso"});
+    } else {
+      res.send({"failure": "O projeto não pode ser cadastrado"});
+    }
+})
+
+tntserver.listen(LISTEN_PORT, ()=>{
+    console.log('🚀 Server is Running...')
+});
