@@ -1,0 +1,50 @@
+import { defineSupportCode } from 'cucumber';
+import { browser, $, element, ElementArrayFinder, by } from 'protractor';
+let chai = require('chai').use(require('chai-as-promised'));
+let expect = chai.expect;
+
+let sameName = ((elem, name) => elem.element(by.name('nomelista')).getText().then(text => text === name));
+
+let pAND = ((p,q) => p.then(a => q.then(b => a && b)))
+
+async function criarProjeto(name) {
+    await $("input[name='namebox']").sendKeys(<string> name);
+    await element(by.name('adicionar')).click();
+}
+
+async function assertTamanhoEqual(set,n) {
+    await set.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(n));
+}
+
+async function assertElementsWithSameName(n,name) {
+    var projetos : ElementArrayFinder = element.all(by.name('projetolista'));
+    var samename = projetos.filter(elem => sameName(elem,name));
+    await assertTamanhoEqual(samename,n); 
+}
+
+defineSupportCode(function ({ Given, When, Then }) {
+    Given(/^I'm at the project's page$/, async () => {
+        await browser.get("http://localhost:4200/");
+        await expect(browser.getTitle()).to.eventually.equal('TntGui');
+        await $("button[name='projetos']").click();
+    })
+
+    Given(/^And I can see a project called "([^\"]*)" in the project's list$/, async (name) => {
+        await criarProjeto(name); 
+        await assertElementsWithSameName(1,name); 
+    });
+
+    When(/^I try to register a new project called "([^\"]*)"$/, async (name) => {
+        await $("input[name='namebox']").sendKeys(<string> name);
+        await $("button[name='adicionar']").click();
+    });
+
+    Then(/^I see an error message$/, async () => {
+        var mensagemerro : ElementArrayFinder = element.all(by.name('msgnomeexistente'));
+        await assertTamanhoEqual(mensagemerro,1);
+    });
+
+    Then(/^I see that there's only on project "([^\"]*)"$/, async (name) => {
+        await assertElementsWithSameName(1,name); 
+    });
+})
