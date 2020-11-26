@@ -32,6 +32,17 @@ tntserver.post('/projeto', function (req: express.Request, res: express.Response
     }
 })
 
+tntserver.delete('/projetos/:nome', function (req: express.Request, res: express.Response) {
+    var nome: string = req.params.nome;
+    var projeto: Projeto = repositorioDeProjetos.removerProjeto(nome);
+  
+    if (projeto) {
+        res.send({"success": "O projeto foi deletado com sucesso"});
+    } else {
+        res.send({"failure": "O projeto não pode ser deletado"});
+    }
+})
+
 tntserver.listen(LISTEN_PORT, ()=>{
     console.log('🚀 Server is Running...')
 });

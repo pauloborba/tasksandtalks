@@ -27,4 +27,12 @@ export class ProjetoService {
                  retry(2)
                );
   }
+
+  deletar(projeto: Projeto): Observable<Projeto> {
+    return this.http.delete<any>(this.tntURL + "/projetos" + `/${projeto.nome}`)
+             .pipe( 
+                retry(2),
+                map( res => {if (res.failure) {return null;} else {return projeto;}} )
+              ); 
+  }
 }

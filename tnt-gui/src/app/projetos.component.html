@@ -15,12 +15,19 @@
             <th>Arquivado</th>
             <th>Criação</th>
             <th>Conclusão</th>
+            <th>Excluir</th>
         </tr>
         <tr *ngFor="let p of projetos" name="projetolista" class="projeto">
             <td name="nomelista">{{p.nome}}</td>
             <td name="arquivadolista">{{p.arquivado? 'Sim' : 'Não'}}</td>
             <td name="criacaolista">{{p.criacao.toLocaleDateString('pt-BR')}} {{p.criacao.toLocaleTimeString('pt-BR')}}</td>
             <td name="conclusaolista">{{p.conclusao? p.conclusao.toLocaleDateString('pt-BR') + ' ' + p.conclusao.toLocaleTimeString('pt-BR'): '-'}}</td>
+            <td>
+                <button style="padding: 4px" (click)="deletarProjeto(p)" name="deletar_{{p.nome}}">
+                    X
+                </button>
+            </td>
          </tr>
+         
     </table>
 </html>

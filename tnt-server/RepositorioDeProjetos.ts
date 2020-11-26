@@ -20,6 +20,12 @@ export class RepositorioDeProjetos {
         return this.listaDeProjetos;
     };
 
-    removerProjeto(nomeProjeto : string){};
+    removerProjeto(nomeProjeto : string): Projeto {
+        if (this.nomeNaoCadastrado(nomeProjeto)) return null
+        var projeto = this.listaDeProjetos.find(p => p.nome == nomeProjeto)
+        this.listaDeProjetos = this.listaDeProjetos.filter(p => p.nome != projeto.nome)
+        return projeto
+    };
+
     atualizarAtributos(){};
 } 

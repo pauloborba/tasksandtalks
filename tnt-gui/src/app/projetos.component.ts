@@ -32,6 +32,20 @@ import { ProjetoService } from './projeto.service';
       }
     };
 
+    deletarProjeto(p: Projeto): void {
+      this.projetoService.deletar(p)
+             .subscribe(
+               as => {
+                 if (as) {
+                    this.projetos = this.projetos.filter(p => p.nome != as.nome)
+                 } else {
+                    alert('Aluno não deletado.');
+                 } 
+               },
+               msg => { alert(msg.message); }
+             );
+    }
+
     onMove(): void {
       this.nomeDuplicado = false;
     };
