@@ -1,0 +1,39 @@
+.chat_message {
+  border: 2px solid #cc0d0d;
+  background-color: #f4f5ef;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 5px 0;
+  width: 30%;
+}
+
+p {
+font-size: 20px;
+}
+
+.firstParag {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.time-right {
+display: flex;
+justify-content: bottom;
+font-size: smaller;
+}
+
+#snoozeButton {
+align-items: center;
+}
+
+.form-popup {
+width: 32.5%;
+background-color: #1bca9e;
+}
+
+.form-container {
+display: block;
+width: 100%;
+flex-wrap: wrap;
+}
