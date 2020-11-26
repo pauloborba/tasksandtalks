@@ -14,3 +14,10 @@ Given I'm at the project's page
 And I can see a project called "Roteiro de testes" in the list of projects
 When I try to delete a project called "Roteiro de testes"
 Then I can see the project "Roteiro de testes" is no longer in the projects's list
+
+Scenario: Archive and existing project
+Given I'm at the project's page
+And I can see a project called "Roteiro de requisitos" in the list of projects
+And The project "Roteiro de requisitos" is not archived
+When I try to archive the project "Roteiro de requisitos"
+Then I see that the project "Roteiro de requisitos" was archived

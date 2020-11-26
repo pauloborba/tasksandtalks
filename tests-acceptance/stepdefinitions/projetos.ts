@@ -4,6 +4,7 @@ let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
 let sameName = ((elem, name) => elem.element(by.name('nomelista')).getText().then(text => text === name));
+let arquivado = ((elem) => elem.element(by.name('arquivadolista')).getText().then(text => text === 'Sim'));
 
 let pAND = ((p,q) => p.then(a => q.then(b => a && b)))
 
@@ -20,6 +21,12 @@ async function assertElementsWithSameName(n,name) {
     var projetos : ElementArrayFinder = element.all(by.name('projetolista'));
     var samename = projetos.filter(elem => sameName(elem,name));
     await assertTamanhoEqual(samename,n); 
+}
+
+async function assertProjetoArquivado(n,name) {
+    var projetos : ElementArrayFinder = element.all(by.name('projetolista'));
+    var estaarquivado = projetos.filter(elem => pAND(sameName(elem,name),arquivado(elem)));
+    await assertTamanhoEqual(estaarquivado,n); 
 }
 
 defineSupportCode(function ({ Given, When, Then }) {
@@ -59,6 +66,18 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     Then(/^I can see the project "([^\"]*)" is no longer in the projects's list$/, async (name) => {
         await assertElementsWithSameName(0,name);
+    });
+
+    Given(/^The project "([^\"]*)" is not archived$/, async (name) => {
+        await assertProjetoArquivado(0,name); 
+    });
+
+    When(/^I try to archive the project "([^\"]*)"$/, async (name) => {
+        await $(`button[name='arquivar_${name}']`).click();
+    });
+
+    Then(/^I see that the project "([^\"]*)" was archived$/, async (name) => {
+        await assertProjetoArquivado(1,name); 
     });
 
 })
