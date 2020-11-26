@@ -29,7 +29,6 @@ export class ContextoComponent implements OnInit {
     sendDate: new Date()
   }
 
-  
   setPopup(id: Chat): void {
 
     if(id.sender != this.popup.sender) this.flag = true;
@@ -55,9 +54,6 @@ export class ContextoComponent implements OnInit {
         messageContent: this.popup.messageContent,
         sendDate: example
       }
-
-      let aux3 = JSON.stringify(nextReminder)
-      console.log(aux3)
 
       this.contextoService.criarLembrete(nextReminder).subscribe();
 
