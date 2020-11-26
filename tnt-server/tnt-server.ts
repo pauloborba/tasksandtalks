@@ -54,6 +54,13 @@ tntserver.delete('/projetos/:nome', function (req: express.Request, res: express
     }
 })
 
-tntserver.listen(LISTEN_PORT, ()=>{
-    console.log('🚀 Server is Running...')
+var server = tntserver.listen(LISTEN_PORT, ()=>{
+  console.log('🚀 Server is Running...')
 });
+
+function closeServer(): void {
+  server.close();
+}
+
+
+export { server, closeServer }
