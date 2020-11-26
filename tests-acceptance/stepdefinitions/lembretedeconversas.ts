@@ -51,4 +51,8 @@ defineSupportCode(function ({ Given, When, Then }) {
         await expect(abc.getText()).to.eventually.equal('Nao foi possivel salvar o lembrete do email');
         abc.dismiss();
     });
+
+    Given(/^I can see that an email of this thread has a reminder$/, async () => {
+        await expect(hasClass(element(by.name('content')), 'sender-recipient-container-verde')).to.eventually.equal(true);
+    });
 })
