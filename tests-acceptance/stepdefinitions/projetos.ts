@@ -44,7 +44,21 @@ defineSupportCode(function ({ Given, When, Then }) {
         await assertTamanhoEqual(mensagemerro,1);
     });
 
-    Then(/^I see that there's only on project "([^\"]*)"$/, async (name) => {
+    Then(/^I see that there's only one project "([^\"]*)"$/, async (name) => {
         await assertElementsWithSameName(1,name); 
     });
+
+    Given(/^I can see a project called "([^\"]*)" in the list of projects$/, async (name) => {
+        await criarProjeto(name); 
+        await assertElementsWithSameName(1,name); 
+    });
+
+    When(/^I try to delete a project called "([^\"]*)"$/, async (name) => {
+        await $(`button[name='deletar_${name}']`).click();
+    });
+
+    Then(/^I can see the project "([^\"]*)" is no longer in the projects's list$/, async (name) => {
+        await assertElementsWithSameName(0,name);
+    });
+
 })

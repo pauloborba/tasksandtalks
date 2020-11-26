@@ -7,4 +7,10 @@ Given I'm at the project's page
 And And I can see a project called "Roteiro de requisitos" in the project's list
 When I try to register a new project called "Roteiro de requisitos"
 Then I see an error message
-And I see that there's only on project "Roteiro de requisitos"
+And I see that there's only one project "Roteiro de requisitos"
+
+Scenario: Delete an existing project
+Given I'm at the project's page
+And I can see a project called "Roteiro de testes" in the list of projects
+When I try to delete a project called "Roteiro de testes"
+Then I can see the project "Roteiro de testes" is no longer in the projects's list
