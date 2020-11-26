@@ -67,9 +67,9 @@ export class ThreadComponent implements OnInit {
         .subscribe(
           ar => {
             if (ar) {
-              alert("Lembrete de data do email de id "+ id.toString() +" salvo com sucesso");
+              alert("Lembrete de data do email salvo com sucesso");
             } else {
-              alert("Não foi possivel salvar o lembrete do email de id "+ id.toString());
+              alert("Nao foi possivel salvar o lembrete do email");
             } 
           },
           msg => { alert(msg.message); }

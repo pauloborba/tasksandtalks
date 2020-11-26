@@ -6,9 +6,6 @@ export class Contexto{
 
     constructor(){
         this.mapids = new Map();
-        this.mapids.set(999,"01/01/1001");
-        this.mapids.set(3,"24/11/2020");
-        this.mapids.set(4,"25/11/2020");
     }
 
     getMap() : (number[] | string[])[]{

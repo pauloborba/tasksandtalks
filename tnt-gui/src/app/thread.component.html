@@ -3,15 +3,15 @@
     <h1>Thread de Emails</h1>
     <hr>
     <div *ngFor="let threadEmail of emails; index as i" class = "email-container">
-      <div [ngClass]="getClass(threadEmail)">
+      <div [ngClass]="getClass(threadEmail)" name="content">
         <h3>from: {{threadEmail.email.sender}}</h3>
         <h4>to: {{threadEmail.email.recipient}}</h4>
       </div>
-      <h5>{{threadEmail.email.subject}}</h5>
+      <h5 >{{threadEmail.email.subject}}</h5>
       <div class = "botao-container">
-        <p>{{threadEmail.email.content}}</p>
-        <input [(ngModel)]="threadEmail.dataLembrete">
-	      <button (click)="criarlembrete(threadEmail, threadEmail.dataLembrete)"> Adicionar Lembrete </button>
+        <p >{{threadEmail.email.content}}</p>
+        <input name = "lembretededata" [(ngModel)]="threadEmail.dataLembrete">
+	      <button name="alunos" (click)="criarlembrete(threadEmail, threadEmail.dataLembrete)"> Adicionar Lembrete </button>
       </div>
       <hr>
     </div>
