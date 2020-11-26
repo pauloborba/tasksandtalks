@@ -36,6 +36,19 @@ defineSupportCode(function ({ Given, When, Then }) {
         await $("button[name='projetos']").click();
     })
 
+    Given(/^And I cannot see a project called "([^\"]*)" in the project's list$/, async (name) => {
+        await assertElementsWithSameName(0,name); 
+    });
+
+    When(/^I try to register a project called "([^\"]*)"$/, async (name) => {
+        await $("input[name='namebox']").sendKeys(<string> name);
+        await $("button[name='adicionar']").click();
+    });
+
+    Then(/^I see that the project "([^\"]*)" is now on the project's list$/, async (name) => {
+        await assertElementsWithSameName(1,name);
+    });
+
     Given(/^And I can see a project called "([^\"]*)" in the project's list$/, async (name) => {
         await criarProjeto(name); 
         await assertElementsWithSameName(1,name); 
