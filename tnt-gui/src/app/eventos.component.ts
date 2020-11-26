@@ -15,15 +15,16 @@ import { EventService } from './event.service';
 
 export class EventosComponent implements OnInit{
   event: Event = {nome: "", data: "", hora: "", tarefas: [""]};
-  events: Event[] = [{nome: "Preparar Aula de Requisitos", data: "15/12/2020", hora: "08:00", tarefas: [""]},{nome: "Preparar seminario da CBsoft", data: "20/12/2020", hora: "12:00", tarefas: [""]}];
-  calendarEvent: Event = {nome: "Monitoria de InfraSoft", data: "16/12/2020", hora:"19:00", tarefas:[""]};
+  events: Event[] = [];
+  calendarEvent: Event = {nome: "Monitoria  de InfraSoft", data: "16/12/2020", hora:"19:00", tarefas:[""]};
   mostrarLista: boolean = false; 
   dataInput: string;
   linkCalendar: string;
   tarefa1: string;
   tarefa2: string;
+  
+  constructor(private eventService: EventService) {}
 
-  eventoService: EventService;
 
   listarEventos(): void {
    this.mostrarLista = !this.mostrarLista;
@@ -64,7 +65,7 @@ export class EventosComponent implements OnInit{
 
 
   ngOnInit(): void{
-    this.eventoService.getEventos()
+    this.eventService.getEventos()
       .subscribe(
         as => { this.events = as; },
         msg => { alert(msg.message); }

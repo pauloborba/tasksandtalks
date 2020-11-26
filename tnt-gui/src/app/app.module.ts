@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos.component';
+import { EventService } from './event.service';
 import { ProjetosComponent } from './projetos.component';
 import { TarefaComponent } from './tarefa.component';
 
@@ -20,6 +21,7 @@ import { TarefaComponent } from './tarefa.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'eventos',
@@ -32,11 +34,14 @@ import { TarefaComponent } from './tarefa.component';
       {
         path: 'projetos/tarefas',
         component: TarefaComponent
+      },
+      {
+        path: 'projetos/tarefas/contexto',
+        component: TarefaComponent
       }
-
     ])
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
