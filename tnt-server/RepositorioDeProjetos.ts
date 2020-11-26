@@ -8,6 +8,7 @@ export class RepositorioDeProjetos {
             result = new Projeto();
             result = projeto
             this.listaDeProjetos.push(projeto);
+            this.atualizarAtributos(false, false);
         }
         return result;
     };
@@ -23,6 +24,7 @@ export class RepositorioDeProjetos {
     removerProjeto(nomeProjeto : string): Projeto {
         if (this.nomeNaoCadastrado(nomeProjeto)) return null
         var projeto = this.listaDeProjetos.find(p => p.nome == nomeProjeto)
+        this.atualizarAtributos(projeto.arquivado, true)
         this.listaDeProjetos = this.listaDeProjetos.filter(p => p.nome != projeto.nome)
         return projeto
     };
@@ -34,11 +36,12 @@ export class RepositorioDeProjetos {
                 p.conclusao = projeto.conclusao
                 p.arquivado = true
                 result = p
+                this.atualizarAtributos(true, false)
             }
         })
 
         return result
     };
 
-    atualizarAtributos(){};
+    atualizarAtributos(arquivou: boolean, deletou: boolean): void{};
 } 
