@@ -21,6 +21,7 @@ tntserver.use(bodyParser.json());
 tntserver.post('/lembreteconversation', function (req: express.Request, res: express.Response) {
   var tmp : boolean;
   var newReminder : [number,string]  = <[number,string]> req.body;
+  console.log("lixo? :" + newReminder)
   console.log("1 :" + newReminder[0]);
   console.log("2 :" + newReminder[1]);
   tmp = contextolemb.criarNovoLembrete(newReminder);

@@ -10,11 +10,14 @@ export class Contexto{
 
     getMap() : (number[] | string[])[]{
         var listacompleta = [(Array.from(this.mapids.keys())),(Array.from(this.mapids.values()))];
+        for (let [key, value] of this.mapids) {
+            console.log(key, value);
+        }
         return listacompleta;
     }
 
     criarNovoLembrete(lista : [number,string] ) : boolean{
-        this.mapids.set(lista[0], lista[1]); 
+        console.log("lista[1]: " + lista[1]);
         if(!this.datajapassou(lista[1])){
             this.mapids.set(lista[0], lista[1]);
             for (let [key, value] of this.mapids) {
@@ -22,14 +25,16 @@ export class Contexto{
             }
             return true;
         }
+        for (let [key, value] of this.mapids) {
+            console.log(key, value);
+        }
         return false; 
     }
 
     datajapassou(newReminder : string){
         var datahoje = new Date();
-        var data :string = newReminder
-
-
+        var data :string = newReminder;
+        console.log("data" + data);
 
         if(datahoje.getFullYear() >  parseInt(data.substr(6,4))){
             return true;
