@@ -1,5 +1,5 @@
 {
-    "spec_dir": "compiledCode/ta-server/spec",
+    "spec_dir": "compiledCode/tnt-server/spec",
     "spec_files": [
       "**/*[sS]pec.js"
     ],
