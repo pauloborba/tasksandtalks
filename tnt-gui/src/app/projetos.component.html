@@ -1,3 +1,35 @@
 <html>
-
+    <h1>Projetos</h1>
+    <table>
+        <tr>
+           <td><label>Nome </label></td>
+           <td><input [(ngModel)]="projeto.nome" name="namebox"></td>
+           <td><button (click)="criarProjeto(projeto)">Adicionar</button></td>
+        </tr>
+        <tr>
+            <td>Testando <input type="checkbox" name="testing" [(ngModel)]="isTesting"></td>
+        </tr>
+        <tr *ngIf="isTesting">
+            <td><label>Sobrecarga </label></td>
+           <td><input [(ngModel)]="sobrecarga" name="sobrecargabox"></td>
+        </tr>
+    </table>
+       
+    <table>
+        <tr *ngIf="projetos.length > 0">
+           <th>Projetos</th>
+           <td>
+            <div class="dropdown">
+                <button class="dropbtn" name="dropdown">Ordenar</button>
+                <div class="dropdown-content">
+                  <button class="button" (click)="ordenar(false)" name="descending">Maior sobrecarga</button>
+                  <button class="button" (click)="ordenar(true)" name="ascending">Menor sobrecarga</button>
+                </div>
+            </div>
+           </td>
+        </tr>
+        <tr *ngFor="let p of projetos" name="projetoList">
+           <td name="nomelist"><button [ngClass] = "getClass(p)">{{p.nome}}</button></td>
+        </tr>
+    </table>
 </html>
