@@ -18,4 +18,13 @@ export class ContextoService {
                  retry(2)
                );
     }
+
+    criar(aluno: Aluno): Observable<Aluno> {
+        return this.http.post<any>(this.taURL + "/aluno", aluno, {headers: this.headers})
+                 .pipe( 
+                    retry(2),
+                    map( res => {if (res.success) {return aluno;} else {return null;}} )
+                  ); 
+      }
+
 }
