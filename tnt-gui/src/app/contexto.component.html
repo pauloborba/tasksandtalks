@@ -23,7 +23,7 @@
         </div>
         <div *ngIf = "loggedIn">
           <p name="login">Logado como: </p>
-          <p>{{chat.sender}}</p>
+          <p name="loginName">{{chat.sender}}</p>
         </div>
         <textarea name="writeMessage" placeholder="Sua mensagem..." [(ngModel)]="chat.messageContent" required></textarea>
         <button (click)="sendMessage(chat)">Enviar</button>
