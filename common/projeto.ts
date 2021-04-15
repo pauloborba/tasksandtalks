@@ -6,4 +6,12 @@ export class Projeto {
     conclusao: Date;
     arquivado: boolean;
     tarefas: Tarefa[] = [];
+
+    constructor () {
+        this.nome = ""
+        this.criacao = new Date()
+        this.conclusao = null
+        this.arquivado = false
+        this.tarefas = []
+    }
 }
