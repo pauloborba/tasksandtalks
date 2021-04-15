@@ -1,0 +1,42 @@
+h1 {
+  font: 700 25px Verdana;
+}
+
+.email-thread-container {
+  width: 600px;
+}
+
+#email-container h5 {
+  font: 600 13px Verdana;
+  color: rgb(22, 22, 22);
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.sender-recipient-container {
+  display: flex;
+  flex-direction: column;
+  color: #222;
+}
+
+.sender-recipient-container h3 {
+  font: 700 14px Verdana;
+  margin: 0px;
+}
+
+.sender-recipient-container h4 {
+  font: 700 12px Verdana;
+  margin: 0px;
+}
+
+.reply-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reply-container p {
+  font: 500 13px Verdana;
+  color: rgb(22, 22, 22);
+  margin: 5px 0px;
+}
