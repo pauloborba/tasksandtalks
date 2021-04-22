@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThreadComponent } from './thread/thread.component';
 import { ReplyComponent } from './reply/reply.component';
+import { TarefaComponent } from './tarefa/tarefa.component';
 
 import { ProjetosComponent } from './projetos/projetos.component';
+import { ProjetoComponent } from './projetos/projeto/projeto.component';
 import { ProjetoService } from './projetos/projeto.service';
 
 @NgModule({
@@ -18,7 +20,8 @@ import { ProjetoService } from './projetos/projeto.service';
     AppComponent,
     ThreadComponent,
     ReplyComponent,
-    ProjetosComponent
+    ProjetosComponent,
+    ProjetoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,14 @@ import { ProjetoService } from './projetos/projeto.service';
       {
         path: 'projetos',
         component: ProjetosComponent
+      },
+      {
+        path: 'projetos/:projetoID',
+        component: ProjetoComponent
+      },
+      {
+        path: 'projetos/:projetoID/:tarefaID',
+        component: TarefaComponent
       }
     ])
   ],

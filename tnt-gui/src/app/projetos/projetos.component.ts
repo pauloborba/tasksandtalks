@@ -9,7 +9,7 @@ import { ProjetoService } from './projeto.service';
   })
   
   export class ProjetosComponent implements OnInit {
-    projetos: Projeto[] = []
+    projetos: Projeto[] = [];
     projeto: Projeto = new Projeto();
     nomeDuplicado: boolean = false;
 
