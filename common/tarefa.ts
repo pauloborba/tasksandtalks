@@ -9,6 +9,14 @@ export class Tarefa {
   lembrete: Date;
   contextos: Contexto[];
 
-  constructor() { }
+  constructor() { 
+    this.descricao = "";
+    this.prazo = null;
+    this.concluida = false;
+    this.arquivada = false;
+    this.snoozing = false;
+    this.lembrete = null;
+    this.contextos = [];
+  }
 
 }

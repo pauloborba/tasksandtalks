@@ -5,6 +5,9 @@ export class Contexto {
     snoozing: boolean;
 
     constructor() {
-
+        this.lembrete = null;
+        this.lido = false;
+        this.atenção = false;
+        this.snoozing = false;
     }
 }
