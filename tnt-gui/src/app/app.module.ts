@@ -7,11 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ThreadComponent } from './thread.component';
-import { ReplyComponent } from './reply.component';
+import { ThreadComponent } from './thread/thread.component';
+import { ReplyComponent } from './reply/reply.component';
 
-import { ProjetosComponent } from './projetos.component';
-import { ProjetoService } from './projeto.service';
+import { ProjetosComponent } from './projetos/projetos.component';
+import { ProjetoService } from './projetos/projeto.service';
 
 @NgModule({
   declarations: [
