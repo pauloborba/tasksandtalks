@@ -41,10 +41,6 @@ tntserver.post('/email/send', async (request, response) => {
 
 });
 
-tntserver.listen(LISTEN_PORT, () => {
-    console.log('🚀 Server is Running...')
-});
-
 tntserver.get('/projetos', function (req: express.Request, res: express.Response) {
     res.send(JSON.stringify(repositorioDeProjetos.getProjetos()));
 })

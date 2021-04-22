@@ -5,8 +5,8 @@
   "main": "tnt-server.js",
   "scripts": {
     "test": "npm run tsc && jasmine --config=./spec/support/jasmine.json",
-    "tsc": "node .\\node_modules\\typescript\\bin\\tsc",
-    "start": "npm run tsc && node compiledCode\\tnt-server\\tnt-server.js"
+    "tsc": "./node_modules/.bin/tsc",
+    "start": "npm run tsc && node compiledCode/tnt-server/tnt-server.js"
   },
   "author": "Mateus Santana",
   "license": "MIT",
