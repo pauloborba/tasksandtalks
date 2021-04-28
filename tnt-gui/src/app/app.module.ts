@@ -9,7 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThreadComponent } from './thread/thread.component';
 import { ReplyComponent } from './reply/reply.component';
+
 import { TarefaComponent } from './tarefa/tarefa.component';
+import { TarefaService } from './tarefa/tarefa.service';
 
 import { ProjetosComponent } from './projetos/projetos.component';
 import { ProjetoComponent } from './projetos/projeto/projeto.component';
@@ -21,7 +23,8 @@ import { ProjetoService } from './projetos/projeto.service';
     ThreadComponent,
     ReplyComponent,
     ProjetosComponent,
-    ProjetoComponent
+    ProjetoComponent,
+    TarefaComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,10 @@ import { ProjetoService } from './projetos/projeto.service';
       }
     ])
   ],
-  providers: [ProjetoService],
+  providers: [
+    ProjetoService,
+    TarefaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

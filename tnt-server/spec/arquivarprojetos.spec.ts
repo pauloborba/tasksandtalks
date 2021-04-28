@@ -22,7 +22,7 @@ describe("O arquivamento de projetos", () => {
     cadastrarProjeto("Requisitos");
 
     var projeto = expectSoUmProjeto();
-    cadastro.arquivarProjeto(projeto)
+    cadastro.atualizarProjeto(projeto)
     expect(projeto.nome).toBe("Requisitos");
     expect(projeto.arquivado).toBe(true);
   })

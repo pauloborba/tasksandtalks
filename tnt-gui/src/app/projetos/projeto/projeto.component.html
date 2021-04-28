@@ -1,47 +1,45 @@
-<html>
-<table class="projeto">
-    <tr>
-        <th>Nome</th>
-        <th>Arquivado</th>
-        <th>Criação</th>
-        <th>Conclusão</th>
-    </tr>
-    <tr>
-        <td name="nomelista">{{ projeto.nome }}</td>
-        <td name="arquivadolista">{{ projeto.arquivado? 'Sim' : 'Não' }}</td>
-        <td name="criacaolista">{{ projeto.criacao }}</td>
-        <td name="conclusaolista">{{ projeto.conclusao? projeto.conclusao : '-' }}</td>
-    </tr>
+<div>
+    <table class="projeto">
+        <tr>
+            <th>Nome</th>
+            <th>Arquivado</th>
+            <th>Criação</th>
+            <th>Conclusão</th>
+        </tr>
+        <tr>
+            <td name="nomelista">{{ projeto.nome }}</td>
+            <td name="arquivadolista">{{ projeto.arquivado? 'Sim' : 'Não' }}</td>
+            <td name="criacaolista">{{ projeto.criacao | date: 'dd/MM/yyyy - hh:mm a'}}</td>
+            <td name="conclusaolista">{{ projeto.conclusao? projeto.conclusao : '-' }}</td>
+        </tr>
 
-</table>
+    </table>
 
-<table style="margin: 10px 0px 30px 0px">
-    <tr>
-       <td style="padding: 0px 20px 0px 0px"><label>Tarefa:</label></td>
-       <td><input [(ngModel)]="tarefa.descricao" name="descbox"></td>
-       <td><input [(ngModel)]="tarefa.prazo" name="datebox" type="date"></td>
-       <td><button (click)="criarTarefa(tarefa)" class="add" name="adicionar">Adicionar</button></td>
-    </tr>
-</table>
+    <table style="margin: 10px 0px 30px 0px">
+        <tr>
+            <td style="padding: 0px 20px 0px 0px"><label>Tarefa:</label></td>
+            <td><input [(ngModel)]="tarefa.descricao" name="descbox"></td>
+            <td><input [(ngModel)]="tarefa.prazo" name="datebox" type="date"></td>
+            <td><button (click)="criarTarefa(tarefa)" class="add" name="adicionar">Adicionar</button></td>
+        </tr>
+    </table>
 
-<table>
-    <tr *ngIf="projeto.tarefas.length > 0">
-        <th>Descrição</th>
-        <th>Prazo</th>
-        <th>Conclusão</th>
-        <th>Arquivado</th>
-    </tr>
-    <tr *ngFor="let t of projeto.tarefas" name="projetolista" class="projeto">
-        <td name="nomelista">
-            <a routerLink="{{t.descricao}}">
-                {{t.descricao}}
-            </a>
-        </td>
-        <td name="criacaolista">{{t.prazo}}</td>
-        <td name="conclusaolista">{{t.concluida? 'Sim' : 'Não'}}</td>
-        <td name="arquivadolista">{{t.arquivado? 'Sim' : 'Não'}}</td>
-     </tr>
-     
-</table>
-
-</html>
+    <table>
+        <tr *ngIf="projeto.tarefas.length > 0">
+            <th>Descrição</th>
+            <th>Prazo</th>
+            <th>Conclusão</th>
+            <th>Arquivado</th>
+        </tr>
+        <tr *ngFor="let t of projeto.tarefas" name="projetolista" class="projeto">
+            <td name="nomelista">
+                <a routerLink="{{t.descricao}}">
+                    {{t.descricao}}
+                </a>
+            </td>
+            <td name="criacaolista">{{t.prazo | date: 'dd/MM/yyyy - hh:mm a'}}</td>
+            <td name="conclusaolista">{{t.concluida? 'Sim' : 'Não'}}</td>
+            <td name="arquivadolista">{{t.arquivado? 'Sim' : 'Não'}}</td>
+        </tr>
+    </table>
+</div>

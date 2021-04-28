@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div>
+    <table class="tarefa">
+        <tr>
+            <th>Nome</th>
+            <th>Prazo</th>
+            <th>Finalizada</th>
+        </tr>
+        <tr>
+            <td name="nome">{{ tarefa.descricao }}</td>
+            <td name="prazo">{{ tarefa.prazo | date: 'dd/MM/yyyy - hh:mm a' }}</td>
+            <td name="conclusao">{{ tarefa.concluida ? 'Sim' : 'Não'}}</td>
+        </tr>
+    </table>
 
-</body>
-</html>
+    <div>
+        <h3>Caixa de Entrada</h3>
+        <div *ngIf="tarefa.contextos.length == 0" class="sem-mensagens">
+            <p>Não há mensagens cadastradas</p>
+            <button (click)="atualizarMensagens()">Atualizar</button>
+        </div>
+    </div>
+
+    <table>
+        <tr *ngIf="tarefa.contextos.length > 0">
+            <th>Título</th>
+            <th>Lembrete</th>
+            <th>Lido</th>
+            <th>Atenção</th>
+        </tr>
+        <tr *ngFor="let c of tarefa.contextos" class="mensagens">
+            <td name="nome">{{c.mensagem}}</td>
+            <td name="data">{{c.lembrete | date: 'dd/MM/yyyy - hh:mm a'}}</td>
+            <td name="leitura">{{c.lido? 'Sim' : 'Não'}}</td>
+            <td name="atencao">{{c.atencao? 'Sim' : 'Não'}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,8 +1,27 @@
 import { Projeto } from '../common/projeto';
+import { Tarefa } from '../common/tarefa';
 
 export class RepositorioDeProjetos {
-    listaDeProjetos : Projeto[] = [];
-    adicionarProjeto(projeto : Projeto) {
+    listaDeProjetos: Projeto[] = [];
+
+    contextos: Tarefa["contextos"] = [
+        {
+            mensagem: 'Prazo de entrega está próximo',
+            lembrete: new Date(),
+            lido: false,
+            atencao: true,
+            snoozing: false
+        },
+        {
+            mensagem: 'Entre em contato comigo!',
+            lembrete: new Date(),
+            lido: true,
+            atencao: false,
+            snoozing: false
+        }
+    ];
+
+    adicionarProjeto(projeto: Projeto) {
         var result = null;
         if (this.nomeNaoCadastrado(projeto.nome)) {
             result = new Projeto();
@@ -13,7 +32,7 @@ export class RepositorioDeProjetos {
         return result;
     };
 
-    nomeNaoCadastrado (nome: string) {
+    nomeNaoCadastrado(nome: string) {
         return !this.listaDeProjetos.find(p => p.nome === nome)
     };
 
@@ -21,7 +40,7 @@ export class RepositorioDeProjetos {
         return this.listaDeProjetos;
     };
 
-    removerProjeto(nomeProjeto : string): Projeto {
+    removerProjeto(nomeProjeto: string): Projeto {
         if (this.nomeNaoCadastrado(nomeProjeto)) return null
         var projeto = this.listaDeProjetos.find(p => p.nome == nomeProjeto)
         this.atualizarAtributos(projeto.arquivado, true)
@@ -29,19 +48,49 @@ export class RepositorioDeProjetos {
         return projeto
     };
 
-    arquivarProjeto(projeto: Projeto): Projeto{
+    atualizarProjeto(projeto: Projeto): Projeto {
         var result = null
         this.listaDeProjetos.forEach(p => {
             if (p.nome === projeto.nome) {
                 p.conclusao = projeto.conclusao
-                p.arquivado = true
+                p.arquivado = projeto.arquivado
+                p.tarefas = projeto.tarefas
                 result = p
-                this.atualizarAtributos(true, false)
             }
         })
 
         return result
     };
 
-    atualizarAtributos(arquivou: boolean, deletou: boolean): void{};
-} 
+    atualizarAtributos(arquivou: boolean, deletou: boolean): void { };
+
+    // Tarefas
+    getTarefa(projeto: string, tarefa: string): Tarefa {
+        let result = null;
+        this.listaDeProjetos.forEach(p => {
+            if (p.nome = projeto) {
+                p.tarefas.map (t => {
+                  if (t.descricao == tarefa) {
+                    result = t;
+                  }
+                })
+            }
+        });
+        return result;
+    }
+
+    atualizarMensagens(projeto: string, tarefa: string): Tarefa {
+        let result = null;
+        this.listaDeProjetos.forEach(p => {
+            if (p.nome === projeto) {
+                p.tarefas.map(t => {
+                    if (t.descricao == tarefa) {
+                        t.contextos = this.contextos;
+                        result = t;
+                    }
+                })
+            }
+        });
+        return result;
+    }
+}
