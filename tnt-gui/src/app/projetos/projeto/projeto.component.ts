@@ -40,18 +40,28 @@ export class ProjetoComponent implements OnInit {
 
     criarTarefa(t: Tarefa): void {
         if (t.descricao != '') {
-            this.projeto.tarefas.push(this.tarefa);
-            this.projetoService.atualizar(this.projeto)
-                .subscribe(
-                    as => {
-                        if (as) {
-                            this.tarefa = new Tarefa();
-                        } else {
-                            alert('Tarefa não adicionada');
-                        }
-                    },
-                    msg => { alert(msg.message); }
-                );
+            let alredyExists: boolean = false;
+            this.projeto.tarefas.forEach(value => {
+                if (value.descricao == t.descricao) {
+                    alredyExists = true;
+                }
+            });
+            if (!alredyExists) {
+                this.projeto.tarefas.push(this.tarefa);
+                this.projetoService.atualizar(this.projeto)
+                    .subscribe(
+                        as => {
+                            if (as) {
+                                this.tarefa = new Tarefa();
+                            } else {
+                                alert('Tarefa não adicionada');
+                            }
+                        },
+                        msg => { alert(msg.message); }
+                    );
+            } else {
+                alert('Já existe uma tarefa com esse nome!');
+            }
         }
     }
 }

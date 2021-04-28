@@ -37,12 +37,15 @@
         <h3>
             Tarefas
         </h3>
-        <table class="tabela-tarefas">
-            <tr *ngIf="projeto.tarefas.length > 0">
+        <p *ngIf="projeto.tarefas.length == 0">
+            Ainda não há tarefas cadastradas.
+        </p>
+        <table *ngIf="projeto.tarefas.length > 0" class="tabela-tarefas">
+            <tr>
                 <th>Descrição</th>
                 <th>Prazo</th>
-                <th>Conclusão</th>
                 <th>Arquivado</th>
+                <th>Concluído</th>
             </tr>
             <tr *ngFor="let t of projeto.tarefas" name="projetolista">
                 <td name="descricao">
@@ -51,8 +54,8 @@
                     </a>
                 </td>
                 <td name="prazo">{{t.prazo | date: 'dd/MM/yyyy - hh:mm a'}}</td>
-                <td name="concluida">{{t.concluida? 'Sim' : 'Não'}}</td>
                 <td name="arquivado">{{t.arquivado? 'Sim' : 'Não'}}</td>
+                <td name="concluida">{{t.concluida? 'Sim' : 'Não'}}</td>
             </tr>
         </table>
     </div>
