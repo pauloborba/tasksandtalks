@@ -1,46 +1,62 @@
-.projeto {
-    margin-top: 20px;
-    margin-left: 5px;
+.header {
+    margin-bottom: 30px;
 }
 
-th {
-    padding: 10px;
-    background-color: rgb(231, 85, 0);
-    color: white;
-    border-bottom: 1px solid rgb(172, 172, 172);
+span {
+    margin-right: 20px;
 }
 
-td {
-    text-align: center;
-    padding: 0px 20px 5px 20px;
+.adicionar-tarefa {
+    display: flex;
+    margin: 20px 0px;
+}
+
+input {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: #EFEFEF;
+    font-size: 14px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[name="descbox"] {
+    padding: 12px 30px;
 }
 
 button {
-    background-color: rgb(209, 0, 0);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: #EFEFEF;
+    font-size: 14px;
+    padding: 12px 30px;
     border: none;
-    color: white;
-    padding: 5px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 4px;
-    margin: 4px 2px;
+    border-radius: 10px;
+    outline: none;
     cursor: pointer;
-    transition-duration: 0.5s;
 }
 
-button:hover {
-    background-color: #949494b6;
+button:hover{
+    background-color: #E1E1E1;
 }
 
-button:disabled {
-    background-color: #949494b6;
+.tabela-tarefas {
+    width: 600px;
+    text-align: left;
+    border-collapse: collapse;
+    overflow-x: auto;
 }
 
-.add {
-    background-color: #008CBA;
+th {
+    border-bottom: 1px solid #E1E1E1;
+    height: 30px;
 }
 
-.add:hover {
-    background-color: #008bbab6;
+td {
+    height: 30px;
 }
