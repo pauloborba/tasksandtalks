@@ -72,7 +72,6 @@ tntserver.put('/projeto', function (req: express.Request, res: express.Response)
 tntserver.delete('/projetos/:nome', function (req: express.Request, res: express.Response) {
   var nome: string = req.params.nome;
   var projeto: Projeto = repositorioDeProjetos.removerProjeto(nome);
-
   if (projeto) {
     res.send({ "success": "O projeto foi deletado com sucesso" });
   } else {
@@ -93,7 +92,7 @@ tntserver.put('/tarefas/:projeto/:tarefa/mensagens', function (req: express.Requ
   let tarefa: string = req.params.tarefa;
   let result: Tarefa = repositorioDeProjetos.atualizarMensagens(projeto, tarefa);
   if (result) {
-    res.send({ "success": "A tarefa foi atualizado com sucesso" });
+    res.send({ "success": "A tarefa foi atualizado com sucesso" , result});
   } else {
     res.send({ "failure": "A tarefa não pode ser atualizado" });
   }

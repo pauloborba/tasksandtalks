@@ -28,9 +28,9 @@ export class ProjetoComponent implements OnInit {
         this.projetoService.getProjetos()
             .subscribe(
                 as => {
-                    as.map(a => {
-                        if (a.nome = this.projetoID) {
-                            this.projeto = a;
+                    as.map(p => {
+                        if (p.nome === this.projetoID) {
+                            this.projeto = p;
                         }
                     })
                 },
@@ -52,6 +52,7 @@ export class ProjetoComponent implements OnInit {
                     .subscribe(
                         as => {
                             if (as) {
+                                this.projeto.tarefas = as.tarefas;
                                 this.tarefa = new Tarefa();
                             } else {
                                 alert('Tarefa não adicionada');

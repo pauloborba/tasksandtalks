@@ -39,12 +39,12 @@ import { ProjetoService } from './projeto.service';
               as => {
                   if (as) {
                       var p = this.projetos.forEach(p => {
-                          if (p.nome == as.nome) {
+                          if (p.nome === as.nome) {
                              p.arquivado = true
                           }
                       })
                   } else {
-                      alert('Aluno não arquivado.');
+                      alert('Projeto não arquivado.');
                   } 
               },
               msg => { alert(msg.message); }
@@ -58,7 +58,7 @@ import { ProjetoService } from './projeto.service';
                  if (as) {
                     this.projetos = this.projetos.filter(p => p.nome != as.nome)
                  } else {
-                    alert('Aluno não deletado.');
+                    alert('Projeto não deletado.');
                  } 
                },
                msg => { alert(msg.message); }

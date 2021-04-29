@@ -67,13 +67,10 @@ export class RepositorioDeProjetos {
     // Tarefas
     getTarefa(projeto: string, tarefa: string): Tarefa {
         let result = null;
-        this.listaDeProjetos.forEach(p => {
-            if (p.nome = projeto) {
-                p.tarefas.map (t => {
-                  if (t.descricao == tarefa) {
-                    result = t;
-                  }
-                })
+        let p = this.listaDeProjetos.find(p => p.nome === projeto);
+        p.tarefas.forEach(t => {
+            if (t.descricao === tarefa) {
+                result = t;
             }
         });
         return result;
@@ -81,14 +78,11 @@ export class RepositorioDeProjetos {
 
     atualizarMensagens(projeto: string, tarefa: string): Tarefa {
         let result = null;
-        this.listaDeProjetos.forEach(p => {
-            if (p.nome === projeto) {
-                p.tarefas.map(t => {
-                    if (t.descricao == tarefa) {
-                        t.contextos = this.contextos;
-                        result = t;
-                    }
-                })
+        let p = this.listaDeProjetos.find(p => p.nome === projeto);
+        p.tarefas.forEach(t => {
+            if (t.descricao === tarefa) {
+                t.contextos = this.contextos;
+                result = t;
             }
         });
         return result;

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Tarefa } from '../../../../common/tarefa';
-import { Contexto } from '../../../../common/contexto';
 
 import { TarefaService } from './tarefa.service';
 
@@ -15,8 +14,6 @@ export class TarefaComponent implements OnInit {
   public projetoID: string;
   public tarefaID: string;
   public tarefa: Tarefa;
-
-  public contexto: Contexto = new Contexto();
 
   constructor(
     private tarefaService: TarefaService,
@@ -43,8 +40,13 @@ export class TarefaComponent implements OnInit {
     this.tarefaService.atualizarMensagens(this.projetoID, this.tarefaID)
       .subscribe(
         t => {
-          this.tarefa = t;
-          this.ngOnInit();
+            if (t) {
+              console.log(this.tarefa)
+              this.tarefa.contextos = t.contextos;
+              console.log(t)
+            } else {
+                alert('Tarefa não adicionada');
+            }
         },
         msg => { alert(msg.message); }
       );
