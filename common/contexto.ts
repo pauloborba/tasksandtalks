@@ -4,6 +4,7 @@ export class Contexto {
     lido: boolean;
     atencao: boolean;
     snoozing: boolean;
+    resolvido: boolean;
 
     constructor() {
         this.mensagem = '';
@@ -11,5 +12,6 @@ export class Contexto {
         this.lido = false;
         this.atencao = false;
         this.snoozing = false;
+        this.resolvido = false;
     }
 }

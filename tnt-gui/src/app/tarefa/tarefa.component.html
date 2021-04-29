@@ -32,13 +32,13 @@
             <th>Título</th>
             <th>Lembrete</th>
             <th>Atenção</th>
-            <th>Lido</th>
+            <th>Resolvido</th>
         </tr>
         <tr *ngFor="let c of tarefa.contextos">
             <td name="nome">{{c.mensagem}}</td>
             <td name="data">{{c.lembrete | date: 'dd/MM/yyyy - hh:mm a'}}</td>
             <td name="atencao">{{c.atencao? 'Sim' : 'Não'}}</td>
-            <td name="leitura">{{c.lido? 'Sim' : 'Não'}}</td>
+            <td name="leitura">{{c.resolvido? 'Sim' : 'Não'}}</td>
         </tr>
     </table>
 </div>

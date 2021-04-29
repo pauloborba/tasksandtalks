@@ -6,18 +6,20 @@ export class RepositorioDeProjetos {
 
     contextos: Tarefa["contextos"] = [
         {
-            mensagem: 'Prazo de entrega está próximo',
+            mensagem: 'Bugfix encontrado',
             lembrete: new Date(),
             lido: false,
             atencao: true,
-            snoozing: false
+            snoozing: false,
+            resolvido: false
         },
         {
-            mensagem: 'Entre em contato comigo!',
+            mensagem: 'Revise o PR #33 no github',
             lembrete: new Date(),
             lido: true,
             atencao: false,
-            snoozing: false
+            snoozing: false,
+            resolvido: false
         }
     ];
 
