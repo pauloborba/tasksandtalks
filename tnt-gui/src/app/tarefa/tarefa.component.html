@@ -21,9 +21,19 @@
         <h3>
             Mensagens
         </h3>
+        <div class="box-atualizacao">
+            <table class="tabela-atualizacao">
+                <tr>
+                    <th>Última atualização</th>
+                </tr>
+                <tr>
+                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date: 'dd/MM/yyyy - hh:mm:ss a') }}</td>
+                </tr>
+            </table>
+            <button (click)="atualizarMensagens()" class="botao-atualizacao">Atualizar</button>
+        </div>
         <div *ngIf="tarefa.contextos.length == 0" class="sem-mensagens">
             <p>Não há mensagens cadastradas</p>
-            <button (click)="atualizarMensagens()">Atualizar</button>
         </div>
     </div>
 

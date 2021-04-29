@@ -84,6 +84,7 @@ export class RepositorioDeProjetos {
         p.tarefas.forEach(t => {
             if (t.descricao === tarefa) {
                 t.contextos = this.contextos;
+                t.atualizacao = new Date(Date.now());
                 result = t;
             }
         });
