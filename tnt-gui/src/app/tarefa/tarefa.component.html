@@ -1,6 +1,6 @@
 <div>
     <div class="header">
-        <h2>
+        <h2 id="tarefa-titulo">
             {{ tarefa.descricao }}
         </h2>
         <span>
@@ -22,15 +22,15 @@
             Mensagens
         </h3>
         <div class="box-atualizacao">
-            <table class="tabela-atualizacao">
+            <table id="tabela-atualizacao">
                 <tr>
                     <th>Última atualização</th>
                 </tr>
                 <tr>
-                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date: 'dd/MM/yyyy - hh:mm:ss a') }}</td>
+                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date: 'dd/MM/yyyy - h:mm:ss a') }}</td>
                 </tr>
             </table>
-            <button (click)="atualizarMensagens()" class="botao-atualizacao">Atualizar</button>
+            <button (click)="atualizarMensagens()" id="botao-atualizacao">Atualizar</button>
         </div>
         <div *ngIf="tarefa.contextos.length == 0" class="sem-mensagens">
             <p>Não há mensagens cadastradas</p>

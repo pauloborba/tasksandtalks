@@ -28,12 +28,12 @@ td {
     margin: 20px 0px;
 }
 
-.tabela-atualizacao {
+#tabela-atualizacao {
     width: 300px;
     text-align: left;
 }
 
-.botao-atualizacao {
+#botao-atualizacao {
     margin-left: 50px;
     color: #000000;
     background-color: #EFEFEF;
@@ -45,6 +45,6 @@ td {
     cursor: pointer;
 }
 
-.botao-atualizacao:hover{
+#botao-atualizacao:hover{
     background-color: #E1E1E1;
 }

@@ -2,10 +2,10 @@
   "name": "testes-acceptance",
   "description": "Testes de aceitação do task and talks",
   "scripts": {
-    "tsc": "./node_modules/typescript/bin/tsc",
+    "tsc": "./node_modules/.bin/tsc",
     "test": "npm run tsc && protractor compiledCode/config/config.js",
-    "webdriver-update": "webdriver-manager update --chromedriver --versions.chrome 86.0.4240.198",
-    "webdriver-start": "webdriver-manager start --versions.chrome 86.0.4240.198"
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start"
   },
   "author": "Mateus Santana",
   "devDependencies": {
