@@ -9,7 +9,7 @@ export class RepositorioDeProjetos {
             mensagem: 'Bugfix encontrado',
             lembrete: new Date(),
             lido: false,
-            atencao: true,
+            atencao: false,
             snoozing: false,
             resolvido: false
         },
@@ -17,7 +17,7 @@ export class RepositorioDeProjetos {
             mensagem: 'Revise o PR #33 no github',
             lembrete: new Date(),
             lido: true,
-            atencao: false,
+            atencao: true,
             snoozing: false,
             resolvido: false
         }

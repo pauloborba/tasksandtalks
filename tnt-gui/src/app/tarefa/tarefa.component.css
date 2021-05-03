@@ -48,3 +48,11 @@ td {
 #botao-atualizacao:hover{
     background-color: #E1E1E1;
 }
+
+#atencao-baixo {
+    cursor: pointer;
+}
+
+#atencao-cima {
+    cursor: pointer;
+}

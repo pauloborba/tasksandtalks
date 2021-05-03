@@ -14,6 +14,7 @@ export class TarefaComponent implements OnInit {
   public projetoID: string;
   public tarefaID: string;
   public tarefa: Tarefa;
+  public ordenacao: boolean = false;
 
   constructor(
     private tarefaService: TarefaService,
@@ -51,6 +52,20 @@ export class TarefaComponent implements OnInit {
         },
         msg => { alert(msg.message); }
       );
+  }
+
+  novaOrdem(): void {
+    if (this.ordenacao) {
+      this.tarefa.contextos.sort((x) => {
+        return x.atencao ? 1 : -1;
+      })
+    } else {
+      this.tarefa.contextos.sort((x) => {
+        return x.atencao ? -1 : 1;
+      })
+    }
+
+    this.ordenacao = !this.ordenacao;
   }
 
 }

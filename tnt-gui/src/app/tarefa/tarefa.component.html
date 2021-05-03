@@ -27,7 +27,8 @@
                     <th>Última atualização</th>
                 </tr>
                 <tr>
-                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date: 'dd/MM/yyyy - h:mm:ss a') }}</td>
+                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date:
+                        'dd/MM/yyyy - h:mm:ss a') }}</td>
                 </tr>
             </table>
             <button (click)="atualizarMensagens()" id="botao-atualizacao">Atualizar</button>
@@ -41,7 +42,11 @@
         <tr *ngIf="tarefa.contextos.length > 0">
             <th>Título</th>
             <th>Lembrete</th>
-            <th>Atenção</th>
+            <th>
+                Atenção
+                <span *ngIf="ordenacao === true" id="atencao-baixo" (click)="novaOrdem()">▾</span>
+                <span *ngIf="ordenacao === false" id="atencao-cima" (click)="novaOrdem()">▴</span>
+            </th>
             <th>Resolvido</th>
         </tr>
         <tr *ngFor="let c of tarefa.contextos">
