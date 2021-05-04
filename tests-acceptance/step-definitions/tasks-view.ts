@@ -54,35 +54,31 @@ defineSupportCode(function ({ Given, When, Then }) {
 
         let header = await tableRow[0].all(by.tagName("th"));
         let lineOne = await tableRow[1].all(by.tagName("td"));
-
-        await expect(header.length).to.equal(4);
-        await expect(lineOne.length).to.equal(4);
-
-        await expect(lineOne[0].getText()).to.eventually.equal(message);
-        
-        await expect(header[2].getText()).to.eventually.equal(columnOne + ' ▴');
-        await expect(lineOne[2].getText()).to.eventually.equal(statusOne);
-
-        await expect(header[3].getText()).to.eventually.equal(columnTwo);
-        await expect(lineOne[3].getText()).to.eventually.equal(statusTwo);
-    });
-
-    Given(/^eu vejo abaixo que a mensagem "([^\"]*)" com a coluna "([^\"]*)" marcada com "([^\"]*)" e a coluna "([^\"]*)" marcado com "([^\"]*)"$/, async (message, columnOne, statusOne, columnTwo, statusTwo) => {
-        let tableRow = await element(by.id("tabela-mensagens")).all(by.tagName("tr"));
-
-        let header = await tableRow[0].all(by.tagName("th"));
         let lineTwo = await tableRow[2].all(by.tagName("td"));
 
-        await expect(header.length).to.equal(4);
-        await expect(lineTwo.length).to.equal(4);
+        await expect(header.length).to.equal(6);
+        await expect(lineOne.length).to.equal(6);
+        await expect(lineTwo.length).to.equal(6);
 
-        await expect(lineTwo[0].getText()).to.eventually.equal(message);
         
-        await expect(header[2].getText()).to.eventually.equal(columnOne + ' ▴');
-        await expect(lineTwo[2].getText()).to.eventually.equal(statusOne);
 
-        await expect(header[3].getText()).to.eventually.equal(columnTwo);
-        await expect(lineTwo[3].getText()).to.eventually.equal(statusTwo);
+        if (await lineOne[0].getText() === message) {
+            await expect(lineOne[0].getText()).to.eventually.equal(message);
+            
+            await expect(header[2].getText()).to.eventually.contain(columnOne);
+            await expect(lineOne[2].getText()).to.eventually.equal(statusOne);
+    
+            await expect(header[4].getText()).to.eventually.equal(columnTwo);
+            await expect(lineOne[4].getText()).to.eventually.equal(statusTwo);
+        } else {
+            await expect(lineTwo[0].getText()).to.eventually.equal(message);
+            
+            await expect(header[2].getText()).to.eventually.contain(columnOne);
+            await expect(lineTwo[2].getText()).to.eventually.equal(statusOne);
+    
+            await expect(header[4].getText()).to.eventually.equal(columnTwo);
+            await expect(lineTwo[4].getText()).to.eventually.equal(statusTwo);
+        }
     });
 
     When(/^eu indico a ordenação por prioridade$/, async () => {
@@ -96,10 +92,88 @@ defineSupportCode(function ({ Given, When, Then }) {
         let header = await rows[0].all(by.tagName("th"));
         let lineOne = await rows[1].all(by.tagName("td"));
 
-        await expect(header.length).to.equal(4);
-        await expect(lineOne.length).to.equal(4);
+        await expect(header.length).to.equal(6);
+        await expect(lineOne.length).to.equal(6);
         
-        await expect(header[2].getText()).to.eventually.equal(column + ' ▾');
+        await expect(header[2].getText()).to.eventually.contain(column);
         await expect(lineOne[2].getText()).to.eventually.equal(status);
+    });
+
+    When(/^eu marco a mensagem "([^\"]*)" na indicação de "([^\"]*)"$/, async (message, status) => {
+        let tableRows = await element(by.id("tabela-mensagens")).all(by.tagName("tr"));
+        
+        let header = await tableRows[0].all(by.tagName("th"));
+        let lineOne = await tableRows[1].all(by.tagName("td"));
+        let lineTwo = await tableRows[2].all(by.tagName("td"));
+
+        await expect(header.length).to.equal(6);
+        await expect(lineOne.length).to.equal(6);
+        await expect(lineTwo.length).to.equal(6);
+        
+        if(await lineOne[0].getText() === message) {
+            // mensagem na linha 1
+            if (await header[4].getText() === status) {
+                // resolvido
+                await expect(lineOne[0].getText()).to.eventually.contain(message);
+                await expect(header[4].getText()).to.eventually.equal(status);
+                await lineOne[4 + 1].all(by.tagName('input')).click();
+            } else {
+                // atenção
+                await expect(lineOne[0].getText()).to.eventually.contain(message);
+                await expect(header[2].getText()).to.eventually.contain(status);
+                await lineOne[2 + 1].all(by.tagName('input')).click();
+            }
+        } else {
+            if (await header[4].getText() === status) {
+                // resolvido
+                await expect(lineTwo[0].getText()).to.eventually.contain(message);
+                await expect(header[4].getText()).to.eventually.equal(status);
+                await lineTwo[4 + 1].all(by.tagName('input')).click();
+            } else {
+                // atenção
+                await expect(lineTwo[0].getText()).to.eventually.contain(message);
+                await expect(header[2].getText()).to.eventually.contain(status);
+                await lineTwo[2 + 1].all(by.tagName('input')).click();
+            }
+        }
+    });
+
+    Then(/^eu posso visualizar a mensagem "([^\"]*)" com a coluna "([^\"]*)" marcada com "([^\"]*)"$/, async (message, status, res) => {
+        let tableRows = await element(by.id("tabela-mensagens")).all(by.tagName("tr"));
+        
+        let header = await tableRows[0].all(by.tagName("th"));
+        let lineOne = await tableRows[1].all(by.tagName("td"));
+        let lineTwo = await tableRows[2].all(by.tagName("td"));
+
+        await expect(header.length).to.equal(6);
+        await expect(lineOne.length).to.equal(6);
+        await expect(lineTwo.length).to.equal(6);
+        
+        if(await lineOne[0].getText() === message) {
+            // mensagem na linha 1
+            if (await header[4].getText() === status) {
+                // resolvido
+                await expect(lineOne[0].getText()).to.eventually.contain(message);
+                await expect(header[4].getText()).to.eventually.equal(status);
+                await expect(lineOne[4].getText()).to.eventually.equal(res);
+            } else {
+                // atenção
+                await expect(lineOne[0].getText()).to.eventually.contain(message);
+                await expect(header[2].getText()).to.eventually.contain(status);
+                await expect(lineOne[2].getText()).to.eventually.equal(res);
+            }
+        } else {
+            if (await header[4].getText() === status) {
+                // resolvido
+                await expect(lineTwo[0].getText()).to.eventually.contain(message);
+                await expect(header[4].getText()).to.eventually.equal(status);
+                await expect(lineTwo[4].getText()).to.eventually.equal(res);
+            } else {
+                // atenção
+                await expect(lineTwo[0].getText()).to.eventually.contain(message);
+                await expect(header[2].getText()).to.eventually.contain(status);
+                await expect(lineTwo[2].getText()).to.eventually.equal(res);
+            }
+        }
     });
 });
