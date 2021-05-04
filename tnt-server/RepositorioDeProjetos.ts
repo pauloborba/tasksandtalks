@@ -9,7 +9,7 @@ export class RepositorioDeProjetos {
             mensagem: 'Bugfix encontrado',
             lembrete: new Date(),
             lido: false,
-            atencao: true,
+            atencao: false,
             snoozing: false,
             resolvido: false
         },
@@ -17,7 +17,7 @@ export class RepositorioDeProjetos {
             mensagem: 'Revise o PR #33 no github',
             lembrete: new Date(),
             lido: true,
-            atencao: false,
+            atencao: true,
             snoozing: false,
             resolvido: false
         }
@@ -84,8 +84,33 @@ export class RepositorioDeProjetos {
         p.tarefas.forEach(t => {
             if (t.descricao === tarefa) {
                 t.contextos = this.contextos;
+                t.atualizacao = `${new Date(Date.now()).toISOString().substr(0, 10).split('-').reverse().join('/')} - ${new Date(Date.now()).toLocaleTimeString('en-US')}`;
                 result = t;
             }
+        });
+        return result;
+    }
+
+    atualizarTarefa(projeto: string, tarefa: string, status: string,  mensagem: string): Tarefa { 
+        let result = null;
+        let p = this.listaDeProjetos.find(p => p.nome === projeto);
+        p.tarefas.forEach(t => {
+            if (t.descricao === tarefa) {
+                if (status === 'atencao') {
+                    t.contextos.forEach(c => {
+                        if (c.mensagem === mensagem){
+                            c.atencao = !c.atencao;
+                        }
+                    });
+                } else {
+                    t.contextos.forEach(c => {
+                        if (c.mensagem === mensagem) {
+                            c.resolvido = !c.resolvido;
+                        }
+                    });
+                }
+            }
+            result = t;
         });
         return result;
     }

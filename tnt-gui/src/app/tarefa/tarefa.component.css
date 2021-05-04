@@ -6,7 +6,7 @@ span {
     margin-right: 20px;
 }
 
-.tabela-mensagens {
+#tabela-mensagens {
     width: 700px;
     text-align: left;
     border-collapse: collapse;
@@ -20,4 +20,43 @@ th {
 
 td {
     height: 30px;
+}
+
+#atencao-checkbox {
+    width: 60px;
+}
+
+.box-atualizacao {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+#tabela-atualizacao {
+    width: 300px;
+    text-align: left;
+}
+
+#botao-atualizacao {
+    margin-left: 50px;
+    color: #000000;
+    background-color: #EFEFEF;
+    font-size: 14px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+#botao-atualizacao:hover{
+    background-color: #E1E1E1;
+}
+
+#atencao-baixo {
+    cursor: pointer;
+}
+
+#atencao-cima {
+    cursor: pointer;
 }

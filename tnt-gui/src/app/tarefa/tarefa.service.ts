@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 
 import { Tarefa } from '../../../../common/tarefa';
+import { Projeto } from '../../../../common/projeto';
 
 @Injectable()
 export class TarefaService {
@@ -15,9 +16,9 @@ export class TarefaService {
 
     getTarefa(projetoID: string, tarefaID: string): Observable<Tarefa> {
         return this.http.get<Tarefa>(this.tntURL + "/tarefas" + `/${projetoID}/${tarefaID}`)
-              .pipe(
-                 retry(2)
-               );
+            .pipe(
+                retry(2)
+            );
     }
 
     atualizarMensagens(projetoID: string, tarefaID: string): Observable<Tarefa> {
@@ -27,4 +28,13 @@ export class TarefaService {
                 map(res => { if (res.success) { return res; } else { return null; } })
             );
     }
+
+    atualizarTarefa(projetoID: string, tarefaID: string, status: string, mensagem: string): Observable<Tarefa> {
+        return this.http.put<any>(this.tntURL + "/tarefa/projeto", JSON.stringify({ projetoID, tarefaID, status, mensagem }), { headers: this.headers })
+            .pipe(
+                retry(2),
+                map(res => { if (res.success) { return res; } else { return null; } })
+            );
+    }
+
 }

@@ -9,7 +9,6 @@ export let config: Config = {
     capabilities: {
         browserName: 'chrome'
     },
-    chromeDriver: './node_modules/webdriver-manager/selenium/chromedriver_87.0.4280.20',
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
