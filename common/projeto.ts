@@ -5,13 +5,13 @@ export class Projeto {
     criacao: Date;
     conclusao: Date;
     arquivado: boolean;
-    tarefas: Tarefa[] = [];
+    tarefas: Tarefa[];
 
     constructor () {
-        this.nome = ""
-        this.criacao = new Date()
-        this.conclusao = null
-        this.arquivado = false
-        this.tarefas = []
+        this.nome = "";
+        this.criacao = new Date();
+        this.conclusao = null;
+        this.arquivado = false;
+        this.tarefas = []; 
     }
 }

@@ -1,0 +1,62 @@
+<div>
+    <div class="header">
+        <h2>
+            {{ projeto.nome }}
+        </h2>
+        <span>
+            Criando em:
+            <strong>
+                {{ projeto.criacao | date: 'dd/MM/yyyy'}}
+            </strong>
+        </span>
+        <span>
+            Arquivado?
+            <strong>
+                {{ projeto.arquivado? 'Sim' : 'Não' }}
+            </strong>
+        </span>
+        <span>
+            Concluído?
+            <strong>
+                {{ projeto.conclusao? projeto.conclusao : 'Não' }}
+            </strong>
+        </span>
+    </div>
+
+    <div>
+        <h3>
+            Adicionar tarefa
+        </h3>
+        <div class="adicionar-tarefa">
+            <input [(ngModel)]="tarefa.descricao" name="descbox" placeholder="Descrição">
+            <input [(ngModel)]="tarefa.prazo" name="datebox" type="date">
+            <button (click)="criarTarefa(tarefa)" name="adicionar">Adicionar</button>
+        </div>
+    </div>
+    <div>
+        <h3>
+            Tarefas
+        </h3>
+        <p *ngIf="projeto.tarefas.length == 0">
+            Ainda não há tarefas cadastradas.
+        </p>
+        <table *ngIf="projeto.tarefas.length > 0" class="tabela-tarefas">
+            <tr>
+                <th>Descrição</th>
+                <th>Prazo</th>
+                <th>Arquivado</th>
+                <th>Concluído</th>
+            </tr>
+            <tr *ngFor="let t of projeto.tarefas" name="projetolista">
+                <td name="descricao">
+                    <a routerLink="{{t.descricao}}">
+                        {{t.descricao}}
+                    </a>
+                </td>
+                <td name="prazo">{{t.prazo | date: 'dd/MM/yyyy - hh:mm a'}}</td>
+                <td name="arquivado">{{t.arquivado? 'Sim' : 'Não'}}</td>
+                <td name="concluida">{{t.concluida? 'Sim' : 'Não'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 
-import { Projeto } from '../../../common/projeto';
+import { Projeto } from '../../../../common/projeto';
 
 @Injectable()
 export class ProjetoService {

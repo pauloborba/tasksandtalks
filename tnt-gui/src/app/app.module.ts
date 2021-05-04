@@ -7,18 +7,24 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ThreadComponent } from './thread.component';
-import { ReplyComponent } from './reply.component';
+import { ThreadComponent } from './thread/thread.component';
+import { ReplyComponent } from './reply/reply.component';
 
-import { ProjetosComponent } from './projetos.component';
-import { ProjetoService } from './projeto.service';
+import { TarefaComponent } from './tarefa/tarefa.component';
+import { TarefaService } from './tarefa/tarefa.service';
+
+import { ProjetosComponent } from './projetos/projetos.component';
+import { ProjetoComponent } from './projetos/projeto/projeto.component';
+import { ProjetoService } from './projetos/projeto.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThreadComponent,
     ReplyComponent,
-    ProjetosComponent
+    ProjetosComponent,
+    ProjetoComponent,
+    TarefaComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +40,21 @@ import { ProjetoService } from './projeto.service';
       {
         path: 'projetos',
         component: ProjetosComponent
+      },
+      {
+        path: 'projetos/:projetoID',
+        component: ProjetoComponent
+      },
+      {
+        path: 'projetos/:projetoID/:tarefaID',
+        component: TarefaComponent
       }
     ])
   ],
-  providers: [ProjetoService],
+  providers: [
+    ProjetoService,
+    TarefaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,68 @@
+<div>
+    <div class="header">
+        <h2 id="tarefa-titulo">
+            {{ tarefa.descricao }}
+        </h2>
+        <span>
+            Prazo:
+            <strong>
+                {{ tarefa.prazo | date: 'dd/MM/yyyy'}}
+            </strong>
+        </span>
+        <span>
+            Concluída?
+            <strong>
+                {{ tarefa.concluida ? 'Sim' : 'Não'}}
+            </strong>
+        </span>
+    </div>
+
+    <div>
+        <h3>
+            Mensagens
+        </h3>
+        <div class="box-atualizacao">
+            <table id="tabela-atualizacao">
+                <tr>
+                    <th>Última atualização</th>
+                </tr>
+                <tr>
+                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao) }}</td>
+                </tr>
+            </table>
+            <button (click)="atualizarMensagens()" id="botao-atualizacao">Atualizar</button>
+        </div>
+        <div *ngIf="tarefa.contextos.length == 0" class="sem-mensagens">
+            <p>Não há mensagens cadastradas</p>
+        </div>
+    </div>
+
+    <table id="tabela-mensagens">
+        <tr *ngIf="tarefa.contextos.length > 0">
+            <th>Título</th>
+            <th>Lembrete</th>
+            <th>
+                Atenção
+                <span *ngIf="ordenacao === true" id="atencao-baixo" (click)="novaOrdem()">▾</span>
+                <span *ngIf="ordenacao === false" id="atencao-cima" (click)="novaOrdem()">▴</span>
+            </th>
+            <th id="atencao-checkbox"></th>
+            <th>Resolvido</th>
+            <th id="resolvido-checkbox"></th>
+        </tr>
+        <tr *ngFor="let c of tarefa.contextos">
+            <td name="nome">{{c.mensagem}}</td>
+            <td name="data">{{c.lembrete | date: 'dd/MM/yyyy - hh:mm a'}}</td>
+            <td name="atencao">{{c.atencao? 'Sim' : 'Não'}}</td>
+            <td>
+                <input *ngIf="c.atencao === true" type="checkbox" checked (click)="mudarStatus(c, 'atencao')">
+                <input *ngIf="c.atencao === false" type="checkbox" (click)="mudarStatus(c, 'atencao')">
+            </td>
+            <td name="leitura">{{c.resolvido? 'Sim' : 'Não'}}</td>
+            <td>
+                <input *ngIf="c.resolvido === true" type="checkbox" checked (click)="mudarStatus(c, 'resolvido')">
+                <input *ngIf="c.resolvido === false" type="checkbox" (click)="mudarStatus(c, 'resolvido')">
+            </td>
+        </tr>
+    </table>
+</div>

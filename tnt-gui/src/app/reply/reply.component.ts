@@ -1,6 +1,6 @@
 import { Injectable, Component, OnInit, Input } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Email } from '../../../common/Email';
+import { Email } from '../../../../common/Email';
 
 interface ThreadEmailI {
   id: number;

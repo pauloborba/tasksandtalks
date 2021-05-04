@@ -19,7 +19,11 @@
             <th>Excluir</th>
         </tr>
         <tr *ngFor="let p of projetos" name="projetolista" class="projeto">
-            <td name="nomelista">{{p.nome}}</td>
+            <td name="nomelista">
+                <a routerLink="{{p.nome}}">
+                    {{p.nome}}
+                </a>
+            </td>
             <td name="arquivadolista">{{p.arquivado? 'Sim' : 'Não'}}</td>
             <td name="criacaolista">{{p.criacao.toLocaleDateString('pt-BR')}} {{p.criacao.toLocaleTimeString('pt-BR')}}</td>
             <td name="conclusaolista">{{p.conclusao? p.conclusao.toLocaleDateString('pt-BR') + ' ' + p.conclusao.toLocaleTimeString('pt-BR'): '-'}}</td>

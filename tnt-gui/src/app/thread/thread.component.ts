@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Email } from '../../../common/Email'
+import { Email } from '../../../../common/Email'
 
 interface ThreadEmailI {
   id: number;
