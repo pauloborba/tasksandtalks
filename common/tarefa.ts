@@ -8,7 +8,7 @@ export class Tarefa {
   snoozing: boolean;
   lembrete: Date;
   contextos: Contexto[];
-  atualizacao: Date;
+  atualizacao: string;
 
   constructor() { 
     this.descricao = "";

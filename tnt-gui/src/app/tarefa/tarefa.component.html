@@ -27,8 +27,7 @@
                     <th>Última atualização</th>
                 </tr>
                 <tr>
-                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao | date:
-                        'dd/MM/yyyy - h:mm:ss a') }}</td>
+                    <td>{{ (tarefa.atualizacao == null) ? 'Ainda não houve atualização' : (tarefa.atualizacao) }}</td>
                 </tr>
             </table>
             <button (click)="atualizarMensagens()" id="botao-atualizacao">Atualizar</button>
@@ -38,7 +37,7 @@
         </div>
     </div>
 
-    <table class="tabela-mensagens">
+    <table id="tabela-mensagens">
         <tr *ngIf="tarefa.contextos.length > 0">
             <th>Título</th>
             <th>Lembrete</th>

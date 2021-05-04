@@ -6,7 +6,7 @@ span {
     margin-right: 20px;
 }
 
-.tabela-mensagens {
+#tabela-mensagens {
     width: 700px;
     text-align: left;
     border-collapse: collapse;
