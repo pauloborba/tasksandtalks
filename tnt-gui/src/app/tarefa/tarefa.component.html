@@ -46,13 +46,23 @@
                 <span *ngIf="ordenacao === true" id="atencao-baixo" (click)="novaOrdem()">▾</span>
                 <span *ngIf="ordenacao === false" id="atencao-cima" (click)="novaOrdem()">▴</span>
             </th>
+            <th id="atencao-checkbox"></th>
             <th>Resolvido</th>
+            <th id="resolvido-checkbox"></th>
         </tr>
         <tr *ngFor="let c of tarefa.contextos">
             <td name="nome">{{c.mensagem}}</td>
             <td name="data">{{c.lembrete | date: 'dd/MM/yyyy - hh:mm a'}}</td>
             <td name="atencao">{{c.atencao? 'Sim' : 'Não'}}</td>
+            <td>
+                <input *ngIf="c.atencao === true" type="checkbox" checked (click)="mudarStatus(c, 'atencao')">
+                <input *ngIf="c.atencao === false" type="checkbox" (click)="mudarStatus(c, 'atencao')">
+            </td>
             <td name="leitura">{{c.resolvido? 'Sim' : 'Não'}}</td>
+            <td>
+                <input *ngIf="c.resolvido === true" type="checkbox" checked (click)="mudarStatus(c, 'resolvido')">
+                <input *ngIf="c.resolvido === false" type="checkbox" (click)="mudarStatus(c, 'resolvido')">
+            </td>
         </tr>
     </table>
 </div>

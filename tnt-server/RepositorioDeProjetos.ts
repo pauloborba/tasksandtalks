@@ -90,4 +90,28 @@ export class RepositorioDeProjetos {
         });
         return result;
     }
+
+    atualizarTarefa(projeto: string, tarefa: string, status: string,  mensagem: string): Tarefa { 
+        let result = null;
+        let p = this.listaDeProjetos.find(p => p.nome === projeto);
+        p.tarefas.forEach(t => {
+            if (t.descricao === tarefa) {
+                if (status === 'atencao') {
+                    t.contextos.forEach(c => {
+                        if (c.mensagem === mensagem){
+                            c.atencao = !c.atencao;
+                        }
+                    });
+                } else {
+                    t.contextos.forEach(c => {
+                        if (c.mensagem === mensagem) {
+                            c.resolvido = !c.resolvido;
+                        }
+                    });
+                }
+            }
+            result = t;
+        });
+        return result;
+    }
 }

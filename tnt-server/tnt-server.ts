@@ -98,6 +98,19 @@ tntserver.put('/tarefa/mensagens', function (req: express.Request, res: express.
   }
 });
 
+tntserver.put('/tarefa/projeto', function (req: express.Request, res: express.Response) {
+  let projeto: string = req.body.projetoID;
+  let tarefa: string = req.body.tarefaID;
+  let status: string = req.body.status;
+  let mensagem: string = req.body.mensagem;
+  let result: Tarefa = repositorioDeProjetos.atualizarTarefa(projeto, tarefa, status, mensagem);
+  if (result) {
+    res.send({ "success": "A tarefa foi atualizado com sucesso" });
+  } else {
+    res.send({ "failure": "A tarefa não pode ser atualizado" });
+  }
+});
+
 var server = tntserver.listen(LISTEN_PORT, () => {
   console.log('🚀 Server is Running...')
 });

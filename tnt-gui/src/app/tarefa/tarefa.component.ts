@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Tarefa } from '../../../../common/tarefa';
+import { Contexto } from '../../../../common/contexto';
 
 import { TarefaService } from './tarefa.service';
 
@@ -47,7 +48,7 @@ export class TarefaComponent implements OnInit {
                 msg => { alert(msg.message); }
               );
           } else {
-            alert('Tarefa não adicionada');
+            alert('Tarefa não atualizada');
           }
         },
         msg => { alert(msg.message); }
@@ -66,6 +67,26 @@ export class TarefaComponent implements OnInit {
     }
 
     this.ordenacao = !this.ordenacao;
+  }
+
+  mudarStatus(contexto: Contexto, status: string): void {
+    this.tarefaService.atualizarTarefa(this.projetoID, this.tarefaID, status, contexto.mensagem)
+      .subscribe(
+        res => {
+          if (res) {
+            this.tarefaService.getTarefa(this.projetoID, this.tarefaID)
+              .subscribe(
+                t => {
+                  this.tarefa = t;
+                },
+                msg => { alert(msg.message); }
+              );
+          } else {
+            alert('Tarefa não atualizada');
+          }
+        },
+        msg => { alert(msg.message); }
+      );
   }
 
 }

@@ -22,6 +22,10 @@ td {
     height: 30px;
 }
 
+#atencao-checkbox {
+    width: 60px;
+}
+
 .box-atualizacao {
     display: flex;
     align-items: center;
