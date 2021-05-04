@@ -40,13 +40,7 @@ export class TarefaComponent implements OnInit {
       .subscribe(
         res => {
           if (res) {
-            this.tarefaService.getTarefa(this.projetoID, this.tarefaID)
-              .subscribe(
-                t => {
-                  this.tarefa = t;
-                },
-                msg => { alert(msg.message); }
-              );
+            this.getTarefa();
           } else {
             alert('Tarefa não atualizada');
           }
@@ -74,16 +68,20 @@ export class TarefaComponent implements OnInit {
       .subscribe(
         res => {
           if (res) {
-            this.tarefaService.getTarefa(this.projetoID, this.tarefaID)
-              .subscribe(
-                t => {
-                  this.tarefa = t;
-                },
-                msg => { alert(msg.message); }
-              );
+            this.getTarefa();
           } else {
             alert('Tarefa não atualizada');
           }
+        },
+        msg => { alert(msg.message); }
+      );
+  }
+
+  getTarefa(): void {
+    this.tarefaService.getTarefa(this.projetoID, this.tarefaID)
+      .subscribe(
+        t => {
+          this.tarefa = t;
         },
         msg => { alert(msg.message); }
       );
